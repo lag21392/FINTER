@@ -16,5 +16,31 @@ namespace FINTER
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox_Valor_K_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void TextBox_Valor_K_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validar.SoloNumeros(e);
+        }
+
+
+
+        private void RichTextBox_KeyPress_Lote_Datos(object sender, KeyPressEventArgs e)
+        {
+            Validar.SoloLetras(e);
+        }
     }
 }
