@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace FINTER
 {
@@ -48,12 +49,60 @@ namespace FINTER
 
         private void Button_HallarPolinomio_Click(object sender, EventArgs e)
         {
+            string X = richTextBox_Lote_Datos_X.Text;
+            string Y = richTextBox_Lote_Datos_Y.Text;
+            //validacion de datos antes de hallar polinomio
+            
             //Validar Formato datos X e Y
-            Validar.SoloFormatoDatos(richTextBox_Lote_Datos_X.Text,"X");
-            Validar.SoloFormatoDatos(richTextBox_Lote_Datos_Y.Text,"Y");
+            if(!Validar.SoloFormatoDatos(X,"X") || !Validar.SoloFormatoDatos(Y, "Y"))
+            {
+                
+            }else if(Regex.Replace(X,@"[0-9\-]", string.Empty) != Regex.Replace(Y,@"[0-9\-]", string.Empty)) {
+                //Validar misma cantidad de numeros entre X e Y
+                MessageBox.Show("No hay la misma cantidad de valores entre X y f(x)");
+                
+            }else if(radioButton_Lagrange.Checked.Equals(true))
             //Comprobar Tipo de resolucion a hallar
+            {
+                //Lagrange
 
 
+
+
+            }
+            else if (radioButton_NG_Progresivo.Checked.Equals(true))
+            {
+                //NG_progresivo
+
+
+
+
+
+            }
+            else if (radioButton_NG_Regresivo.Checked.Equals(true))
+            {
+                //NG_Regresivo
+
+
+
+
+
+            }
+            else
+            {
+                MessageBox.Show("No selecciono metodo de resolucion");
+            }
+
+        }
+
+        private void Button_Resolver_Click(object sender, EventArgs e)
+        {
+            //comprovacion de si hay numero k
+            if (textBox_Valor_K.Text.ToString() == "")
+            {
+                MessageBox.Show("Complete el valor K");
+            }
+            
         }
     }
 }

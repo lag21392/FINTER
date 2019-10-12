@@ -258,6 +258,7 @@
             this.button_Resolver.TabIndex = 17;
             this.button_Resolver.Text = "Calcular P(K)";
             this.button_Resolver.UseVisualStyleBackColor = true;
+            this.button_Resolver.Click += new System.EventHandler(this.Button_Resolver_Click);
             // 
             // button2
             // 
