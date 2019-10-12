@@ -48,6 +48,7 @@
             this.textBox_Valor_K = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button_Resolver = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox_Polinomio_De.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -114,6 +115,7 @@
             this.button1.TabIndex = 17;
             this.button1.Text = "Hallar Polinomio";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button_HallarPolinomio_Click);
             // 
             // richTextBox2
             // 
@@ -159,7 +161,7 @@
             this.groupBox1.Controls.Add(this.richTextBox_Lote_Datos_X);
             this.groupBox1.Location = new System.Drawing.Point(12, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(787, 118);
+            this.groupBox1.Size = new System.Drawing.Size(793, 118);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingreso de Datos:";
@@ -209,7 +211,7 @@
             this.groupBox2.Controls.Add(this.button_Resolver);
             this.groupBox2.Location = new System.Drawing.Point(12, 386);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(787, 64);
+            this.groupBox2.Size = new System.Drawing.Size(793, 64);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Especializacion del polinomio en K:";
@@ -257,15 +259,29 @@
             this.button_Resolver.Text = "Calcular P(K)";
             this.button_Resolver.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(667, 463);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(126, 23);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Finalizar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(816, 498);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox_Polinomio_De);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Form1";
             this.Text = "FINTER";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -301,6 +317,7 @@
         private System.Windows.Forms.TextBox textBox_Valor_K;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button_Resolver;
+        private System.Windows.Forms.Button button2;
     }
 }
 

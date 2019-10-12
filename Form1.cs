@@ -38,12 +38,22 @@ namespace FINTER
 
         private void richTextBox_Lote_Datos_X_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validar.LoteDeDatos(e);
+            Validar.SoloParentesisComasNumeros(e);
         }
 
         private void richTextBox_Lote_Datos_Y_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validar.LoteDeDatos(e);
+            Validar.SoloParentesisComasNumeros(e);
+        }
+
+        private void Button_HallarPolinomio_Click(object sender, EventArgs e)
+        {
+            //Validar Formato datos X e Y
+            Validar.SoloFormatoDatos(richTextBox_Lote_Datos_X.Text,"X");
+            Validar.SoloFormatoDatos(richTextBox_Lote_Datos_Y.Text,"Y");
+            //Comprobar Tipo de resolucion a hallar
+
+
         }
     }
 }
