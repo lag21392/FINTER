@@ -43,7 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBox_Lote_Datos_X = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_P_de_K = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_Valor_K = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,18 +58,18 @@
             // 
             this.groupBox_Polinomio_De.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_Polinomio_De.AutoSize = true;
-            this.groupBox_Polinomio_De.Controls.Add(this.button1);
             this.groupBox_Polinomio_De.Controls.Add(this.richTextBox_Pasos_Calculo);
+            this.groupBox_Polinomio_De.Controls.Add(this.button1);
             this.groupBox_Polinomio_De.Controls.Add(this.label2);
             this.groupBox_Polinomio_De.Controls.Add(this.richTextBox1);
             this.groupBox_Polinomio_De.Controls.Add(this.label5);
             this.groupBox_Polinomio_De.Controls.Add(this.radioButton_NG_Regresivo);
             this.groupBox_Polinomio_De.Controls.Add(this.radioButton_NG_Progresivo);
             this.groupBox_Polinomio_De.Controls.Add(this.radioButton_Lagrange);
-            this.groupBox_Polinomio_De.Location = new System.Drawing.Point(12, 128);
+            this.groupBox_Polinomio_De.Location = new System.Drawing.Point(11, 128);
             this.groupBox_Polinomio_De.Name = "groupBox_Polinomio_De";
             this.groupBox_Polinomio_De.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox_Polinomio_De.Size = new System.Drawing.Size(793, 237);
+            this.groupBox_Polinomio_De.Size = new System.Drawing.Size(793, 427);
             this.groupBox_Polinomio_De.TabIndex = 2;
             this.groupBox_Polinomio_De.TabStop = false;
             this.groupBox_Polinomio_De.Text = "Calculo de polinomio P(x):";
@@ -122,7 +122,7 @@
             this.richTextBox_Pasos_Calculo.Location = new System.Drawing.Point(4, 56);
             this.richTextBox_Pasos_Calculo.Name = "richTextBox_Pasos_Calculo";
             this.richTextBox_Pasos_Calculo.ReadOnly = true;
-            this.richTextBox_Pasos_Calculo.Size = new System.Drawing.Size(774, 114);
+            this.richTextBox_Pasos_Calculo.Size = new System.Drawing.Size(774, 308);
             this.richTextBox_Pasos_Calculo.TabIndex = 11;
             this.richTextBox_Pasos_Calculo.Text = "";
             // 
@@ -137,7 +137,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(5, 193);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 383);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(773, 25);
@@ -147,7 +147,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 177);
+            this.label5.Location = new System.Drawing.Point(4, 367);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 13);
             this.label5.TabIndex = 14;
@@ -204,25 +204,25 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.textBox_P_de_K);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.textBox_Valor_K);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.button_Resolver);
-            this.groupBox2.Location = new System.Drawing.Point(12, 386);
+            this.groupBox2.Location = new System.Drawing.Point(12, 547);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(793, 64);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Especializacion del polinomio en K:";
             // 
-            // textBox1
+            // textBox_P_de_K
             // 
-            this.textBox1.Location = new System.Drawing.Point(45, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
-            this.textBox1.TabIndex = 22;
+            this.textBox_P_de_K.Location = new System.Drawing.Point(45, 39);
+            this.textBox_P_de_K.Name = "textBox_P_de_K";
+            this.textBox_P_de_K.ReadOnly = true;
+            this.textBox_P_de_K.Size = new System.Drawing.Size(159, 20);
+            this.textBox_P_de_K.TabIndex = 22;
             // 
             // label3
             // 
@@ -262,7 +262,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(667, 463);
+            this.button2.Location = new System.Drawing.Point(667, 624);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 23);
             this.button2.TabIndex = 19;
@@ -276,7 +276,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ClientSize = new System.Drawing.Size(816, 498);
+            this.ClientSize = new System.Drawing.Size(816, 651);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -313,7 +313,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox richTextBox_Lote_Datos_X;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_P_de_K;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_Valor_K;
         private System.Windows.Forms.Label label7;

@@ -8,3 +8,13 @@ C:\Users\LAG\source\repos\FINTER\FINTER\obj\Debug\FINTER.csproj.GenerateResource
 C:\Users\LAG\source\repos\FINTER\FINTER\obj\Debug\FINTER.csproj.CoreCompileInputs.cache
 C:\Users\LAG\source\repos\FINTER\FINTER\obj\Debug\FINTER.exe
 C:\Users\LAG\source\repos\FINTER\FINTER\obj\Debug\FINTER.pdb
+C:\Users\LAG\source\repos\FINTER\FINTER\bin\Debug\Calculus.dll
+C:\Users\LAG\source\repos\FINTER\FINTER\bin\Debug\System.Buffers.dll
+C:\Users\LAG\source\repos\FINTER\FINTER\bin\Debug\System.Memory.dll
+C:\Users\LAG\source\repos\FINTER\FINTER\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\LAG\source\repos\FINTER\FINTER\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\LAG\source\repos\FINTER\FINTER\bin\Debug\System.Buffers.xml
+C:\Users\LAG\source\repos\FINTER\FINTER\bin\Debug\System.Memory.xml
+C:\Users\LAG\source\repos\FINTER\FINTER\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\LAG\source\repos\FINTER\FINTER\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\LAG\source\repos\FINTER\FINTER\obj\Debug\FINTER.csproj.CopyComplete

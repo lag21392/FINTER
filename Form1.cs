@@ -9,13 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
+using Calculus;
+
 namespace FINTER
 {
     public partial class Form1 : Form
     {
+        string polinomio = "";
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -70,10 +74,47 @@ namespace FINTER
                 int cantidadValoresXeY = Regex.Replace(X, @"[0-9\-]", string.Empty).Length - 1;
                 int[] vX = new int[cantidadValoresXeY];
                 int[] vY = new int[cantidadValoresXeY];
-                richTextBox_Pasos_Calculo.Text= CargarVectoresXeY(X, Y, vX, vY);
-                
+                richTextBox_Pasos_Calculo.Text= CargarVectoresXeY(X, Y, vX, vY)+"\n";
 
+                //carga de vector vL
+                string[] vPL = new string[cantidadValoresXeY];
+                int[] vL = new int[cantidadValoresXeY];
+                polinomio = "";
+                for (int i =0; i < cantidadValoresXeY; i++)
+                {
+                    vPL[i] = "";
+                    for (int j = 0; j < cantidadValoresXeY; j++)
+                    {
+                        if (j != i)
+                        {
+                            if (vPL[i] == "")
+                            {
+                                vPL[i] += "(x-" + vX[j].ToString() + ")";
+                            }
+                            else
+                            {
+                                vPL[i] += "*(x-" + vX[j].ToString() + ")";
+                            }
+                            
+                            vL[i] = vL[i]*(vX[i] - vX[j]);
+                        }
 
+                    }
+                    richTextBox_Pasos_Calculo.Text += "L" + i + "(x) = " + vPL[i]+"    ";
+                    richTextBox_Pasos_Calculo.Text += "L" + i + "(" + vX[i] + ") = " + CalcularExprecion(vPL[i], vX[i]);
+                    richTextBox_Pasos_Calculo.Text += "\n\n";
+                    if (polinomio == "")
+                    {
+                        polinomio += " (" + CalcularExprecion(vPL[i], vX[i]) + "/" + vY[i] + ")*" + vPL[i];
+                    }
+                    else
+                    {
+                        polinomio += " + (" + CalcularExprecion(vPL[i], vX[i]) + "/" + vY[i] + ")*" + vPL[i];
+                    }
+                        
+                }
+                richTextBox_Pasos_Calculo.Text += "P(x) =";
+                richTextBox_Pasos_Calculo.Text += polinomio;
 
             }
             else if (radioButton_NG_Progresivo.Checked.Equals(true))
@@ -116,13 +157,17 @@ namespace FINTER
             {
                 MessageBox.Show("Complete el valor K");
             }
+            else
+            {
+                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(polinomio, Convert.ToInt32(textBox_Valor_K.Text)));
+            }
             
         }
 
 
         public static String CargarVectoresXeY(string X, string Y, int[] vX, int[] vY)
         {
-            String consola="";
+            String consola="|  X  |  Y  | \n" ;
             int cantidadValoresXeY = Regex.Replace(X, @"[0-9\-]", string.Empty).Length - 1;
             //paso a formato de (1,3,8) a 1,3,8,
             string remplazoX = Regex.Replace(X, @"[()]", string.Empty) + ",";
@@ -145,6 +190,24 @@ namespace FINTER
                consola += " | " + vX[i].ToString() + " | " + vY[i].ToString() + " | " + "\n";
             }
             return consola;
+        }
+        public static double CalcularExprecion(string expression,int x)
+        {
+            double fx;
+            Calculo AnalizadorDeFunciones = new Calculo();
+
+            if (AnalizadorDeFunciones.Sintaxis(expression, 'x')) 
+            {
+                fx = AnalizadorDeFunciones.EvaluaFx(x);
+
+                return fx;
+            }
+            else
+            {
+                MessageBox.Show("Mal la sintaxis de la funcion");
+                // aquí mensaje de error en sintaxis
+            }
+            return -1;
         }
     }
 }
