@@ -38,9 +38,6 @@ namespace FINTER
 
 
 
-        private void RichTextBox_KeyPress_Lote_Datos(object sender, KeyPressEventArgs e)
-        {
-            Validar.SoloLetras(e);
-        }
+
     }
 }
