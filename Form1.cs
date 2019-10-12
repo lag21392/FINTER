@@ -103,7 +103,11 @@ namespace FINTER
                     richTextBox_Pasos_Calculo.Text += "L" + i + "(x) = " + vPL[i]+"    ";
                     richTextBox_Pasos_Calculo.Text += "L" + i + "(" + vX[i] + ") = " + CalcularExprecion(vPL[i], vX[i]);
                     richTextBox_Pasos_Calculo.Text += "\n\n";
-                    if (polinomio == "")
+                    if (CalcularExprecion(vPL[i], vX[i]) == 0)
+                    {
+
+                    }
+                    else if (polinomio == "")
                     {
                         polinomio += " (" + CalcularExprecion(vPL[i], vX[i]) + "/" + vY[i] + ")*" + vPL[i];
                     }
@@ -113,8 +117,8 @@ namespace FINTER
                     }
                         
                 }
-                richTextBox_Pasos_Calculo.Text += "P(x) =";
-                richTextBox_Pasos_Calculo.Text += polinomio;
+                richTextBox_PolinomioPdeX.Text += "P(x) =";
+                richTextBox_PolinomioPdeX.Text += polinomio;
 
             }
             else if (radioButton_NG_Progresivo.Checked.Equals(true))
@@ -126,7 +130,25 @@ namespace FINTER
                 int[] vY = new int[cantidadValoresXeY];
                 richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY);
 
-
+                //carga de vector vO metodo general son los o1 o2 o3 etc
+                //se crea y se genere tabla de vectores con su tamaño correspondiente a cada uno
+                int[][] vO = new int[cantidadValoresXeY - 1][];
+                for(int i = 0; i < cantidadValoresXeY - 1; i++)
+                {
+                    vO[i] = new int[cantidadValoresXeY - 1 - i];
+                    for(int j = 0; j < vO[i].Length; j++)
+                    {
+                        if (i == 0)
+                        {
+                            vO[i][j] = (vY[j + 1] - vY[j]) / (vX[j + 1] - vX[j]);
+                        }
+                        else
+                        {
+                            vO[i][j] = (vO[i][j + 1] - vO[i][j]) / (vX[j + 1] - vX[j]);
+                        }
+                        
+                    }
+                }
 
 
             }
@@ -208,6 +230,11 @@ namespace FINTER
                 // aquí mensaje de error en sintaxis
             }
             return -1;
+        }
+
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
