@@ -36,8 +36,14 @@ namespace FINTER
             Validar.SoloNumeros(e);
         }
 
+        private void richTextBox_Lote_Datos_X_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validar.LoteDeDatos(e);
+        }
 
-
-
+        private void richTextBox_Lote_Datos_Y_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validar.LoteDeDatos(e);
+        }
     }
 }

@@ -180,6 +180,7 @@
             this.richTextBox_Lote_Datos_Y.Size = new System.Drawing.Size(773, 24);
             this.richTextBox_Lote_Datos_Y.TabIndex = 11;
             this.richTextBox_Lote_Datos_Y.Text = "";
+            this.richTextBox_Lote_Datos_Y.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox_Lote_Datos_Y_KeyPress);
             // 
             // label1
             // 
@@ -197,6 +198,7 @@
             this.richTextBox_Lote_Datos_X.Size = new System.Drawing.Size(773, 24);
             this.richTextBox_Lote_Datos_X.TabIndex = 9;
             this.richTextBox_Lote_Datos_X.Text = "";
+            this.richTextBox_Lote_Datos_X.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox_Lote_Datos_X_KeyPress);
             // 
             // groupBox2
             // 
@@ -235,6 +237,7 @@
             this.textBox_Valor_K.Name = "textBox_Valor_K";
             this.textBox_Valor_K.Size = new System.Drawing.Size(159, 20);
             this.textBox_Valor_K.TabIndex = 20;
+            this.textBox_Valor_K.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Valor_K_KeyPress);
             // 
             // label7
             // 

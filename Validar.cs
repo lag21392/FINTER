@@ -74,5 +74,33 @@ namespace FINTER
                 MessageBox.Show("Solo numeros o numeros con punto decimal");
             }
         }
+        public static void LoteDeDatos(KeyPressEventArgs v)
+        {
+            if (Char.IsDigit(v.KeyChar))
+            {
+                v.Handled = false;
+            }
+            else if (Char.IsControl(v.KeyChar))
+            {
+                v.Handled = false;
+            }
+            else if (v.KeyChar.ToString().Equals("("))
+            {
+                v.Handled = false;
+            }
+            else if (v.KeyChar.ToString().Equals(")"))
+            {
+                v.Handled = false;
+            }
+            else if (v.KeyChar.ToString().Equals(","))
+            {
+                v.Handled = false;
+            }
+            else
+            {
+                v.Handled = true;
+                MessageBox.Show("Solo parentesis, numeros y comas");
+            }
+        }
     }
 }
