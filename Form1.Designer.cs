@@ -33,7 +33,7 @@
             this.radioButton_NG_Progresivo = new System.Windows.Forms.RadioButton();
             this.radioButton_Lagrange = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox_Pasos_Calculo = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@
             this.groupBox_Polinomio_De.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_Polinomio_De.AutoSize = true;
             this.groupBox_Polinomio_De.Controls.Add(this.button1);
-            this.groupBox_Polinomio_De.Controls.Add(this.richTextBox2);
+            this.groupBox_Polinomio_De.Controls.Add(this.richTextBox_Pasos_Calculo);
             this.groupBox_Polinomio_De.Controls.Add(this.label2);
             this.groupBox_Polinomio_De.Controls.Add(this.richTextBox1);
             this.groupBox_Polinomio_De.Controls.Add(this.label5);
@@ -117,14 +117,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button_HallarPolinomio_Click);
             // 
-            // richTextBox2
+            // richTextBox_Pasos_Calculo
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(4, 56);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(774, 114);
-            this.richTextBox2.TabIndex = 11;
-            this.richTextBox2.Text = "";
+            this.richTextBox_Pasos_Calculo.Location = new System.Drawing.Point(4, 56);
+            this.richTextBox_Pasos_Calculo.Name = "richTextBox_Pasos_Calculo";
+            this.richTextBox_Pasos_Calculo.ReadOnly = true;
+            this.richTextBox_Pasos_Calculo.Size = new System.Drawing.Size(774, 114);
+            this.richTextBox_Pasos_Calculo.TabIndex = 11;
+            this.richTextBox_Pasos_Calculo.Text = "";
             // 
             // label2
             // 
@@ -303,7 +303,7 @@
         private System.Windows.Forms.RadioButton radioButton_NG_Progresivo;
         private System.Windows.Forms.RadioButton radioButton_Lagrange;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox richTextBox_Pasos_Calculo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label5;
