@@ -117,7 +117,7 @@ namespace FINTER
                     }
                         
                 }
-                richTextBox_PolinomioPdeX.Text += "P(x) =";
+                richTextBox_PolinomioPdeX.Text = "P(x) =";
                 richTextBox_PolinomioPdeX.Text += polinomio;
 
             }
@@ -144,13 +144,27 @@ namespace FINTER
                         }
                         else
                         {
-                            vO[i][j] = (vO[i][j + 1] - vO[i][j]) / (vX[j + 1] - vX[j]);
+                            vO[i][j] = (vO[i-1][j + 1] - vO[i-1][j]) / (vX[j+ (vX.Length-vO[i].Length) ] - vX[j]);
                         }
                         
                     }
                 }
+                string polinomio = "";
+                polinomio += vY[0].ToString() ;
+                for(int i = 0; i < vO.Length; i++)
+                {
+                    if (vO[i][0] != 0)
+                    {
+                        polinomio += "+" + vO[i][0].ToString();
+                        for (int x = 0; x <= i ; x++)
+                        {
+                            polinomio += "*(x-" + vX[x].ToString() + ")";
+                        }
+                    }
 
-
+                }
+                richTextBox_PolinomioPdeX.Text = "P(x) =";
+                richTextBox_PolinomioPdeX.Text += polinomio;
             }
             else if (radioButton_NG_Regresivo.Checked.Equals(true))
             {
@@ -160,6 +174,42 @@ namespace FINTER
                 int[] vX = new int[cantidadValoresXeY];
                 int[] vY = new int[cantidadValoresXeY];
                 richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY);
+
+                //carga de vector vO metodo general son los o1 o2 o3 etc
+                //se crea y se genere tabla de vectores con su tamaño correspondiente a cada uno
+                int[][] vO = new int[cantidadValoresXeY - 1][];
+                for (int i = 0; i < cantidadValoresXeY - 1; i++)
+                {
+                    vO[i] = new int[cantidadValoresXeY - 1 - i];
+                    for (int j = 0; j < vO[i].Length; j++)
+                    {
+                        if (i == 0)
+                        {
+                            vO[i][j] = (vY[j + 1] - vY[j]) / (vX[j + 1] - vX[j]);
+                        }
+                        else
+                        {
+                            vO[i][j] = (vO[i - 1][j + 1] - vO[i - 1][j]) / (vX[j + (vX.Length - vO[i].Length)] - vX[j]);
+                        }
+
+                    }
+                }
+                string polinomio = "";
+                polinomio += vY[vY.Length-1].ToString();
+                for (int i = 0; i < vO.Length; i++)
+                {
+                    if (vO[i][vO[i].Length - 1] != 0)
+                    {
+                        polinomio += "+" + vO[i][vO[i].Length-1].ToString();
+                        for (int x = 0; x <= i ; x++)
+                        {
+                            polinomio += "*(x-" + vX[vX.Length-1-x].ToString() + ")";
+                        }
+                    }
+
+                }
+                richTextBox_PolinomioPdeX.Text = "P(x) =";
+                richTextBox_PolinomioPdeX.Text += polinomio;
 
 
 
