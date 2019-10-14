@@ -109,11 +109,11 @@ namespace FINTER
                     }
                     else if (polinomio == "")
                     {
-                        polinomio += " (" + CalcularExprecion(vPL[i], vX[i]) + "/" + vY[i] + ")*" + vPL[i];
+                        polinomio += " (" + vY[i] + "/" + CalcularExprecion(vPL[i], vX[i]) + ")*" + vPL[i];
                     }
                     else
                     {
-                        polinomio += " + (" + CalcularExprecion(vPL[i], vX[i]) + "/" + vY[i] + ")*" + vPL[i];
+                        polinomio += " + (" + vY[i] + "/" + CalcularExprecion(vPL[i], vX[i]) + ")*" + vPL[i];
                     }
                         
                 }

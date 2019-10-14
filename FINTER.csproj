@@ -68,9 +68,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Polinomio_Lagrange.cs" />
-    <Compile Include="Polinomio_NG_Progresivo.cs" />
-    <Compile Include="Polinomio_NG_Regresivo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validar.cs" />
