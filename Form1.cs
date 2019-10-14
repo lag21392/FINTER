@@ -231,7 +231,7 @@ namespace FINTER
             }
             else
             {
-                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(polinomio, Convert.ToInt32(textBox_Valor_K.Text)));
+                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(richTextBox_PolinomioPdeX.Text.Replace("P(x) =",""), Convert.ToInt32(textBox_Valor_K.Text)));
             }
             
         }
@@ -283,6 +283,11 @@ namespace FINTER
         }
 
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RichTextBox_PolinomioPdeX_TextChanged(object sender, EventArgs e)
         {
 
         }

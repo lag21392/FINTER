@@ -144,6 +144,7 @@
             this.richTextBox_PolinomioPdeX.Size = new System.Drawing.Size(773, 54);
             this.richTextBox_PolinomioPdeX.TabIndex = 13;
             this.richTextBox_PolinomioPdeX.Text = "";
+            this.richTextBox_PolinomioPdeX.TextChanged += new System.EventHandler(this.RichTextBox_PolinomioPdeX_TextChanged);
             // 
             // label5
             // 
