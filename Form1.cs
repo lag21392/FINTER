@@ -140,12 +140,29 @@ namespace FINTER
                     {
                         if (i == 0)
                         {
-                            vO[i][j] = (vY[j + 1] - vY[j]) / (vX[j + 1] - vX[j]);
+                            if((vX[j + 1] - vX[j]) != 0)
+                            {
+                                vO[i][j] = (vY[j + 1] - vY[j]) / (vX[j + 1] - vX[j]);
+                            }
+                            else
+                            {
+                                MessageBox.Show("vO[" + i+"][" + j + "] Es = 0 ya que divicion por 0");
+                                vO[i][j] = 0;
+                            }
+                            
                         }
                         else
                         {
-                            vO[i][j] = (vO[i-1][j + 1] - vO[i-1][j]) / (vX[j+ (vX.Length-vO[i].Length) ] - vX[j]);
-                        }
+                            if ((vX[j + (vX.Length - vO[i].Length)] - vX[j]) != 0)
+                            {
+                                vO[i][j] = (vO[i-1][j + 1] - vO[i-1][j]) / (vX[j+ (vX.Length-vO[i].Length) ] - vX[j]);
+                            }
+                                else
+                            {
+                                MessageBox.Show("vO[" + i + "][" + j + "] Es = 0 ya que divicion por 0");
+                                vO[i][j] = 0;
+                            }
+                    }
                         
                     }
                 }
@@ -185,12 +202,27 @@ namespace FINTER
                     {
                         if (i == 0)
                         {
+                            if((vX[j + 1] - vX[j]) != 0) { 
                             vO[i][j] = (vY[j + 1] - vY[j]) / (vX[j + 1] - vX[j]);
-                        }
+                            }
+                            else
+                            {
+                                MessageBox.Show("vO[" + i + "][" + j + "] Es = 0 ya que divicion por 0");
+                                vO[i][j] = 0;
+                            }
+                    }
                         else
                         {
-                            vO[i][j] = (vO[i - 1][j + 1] - vO[i - 1][j]) / (vX[j + (vX.Length - vO[i].Length)] - vX[j]);
-                        }
+                            if ((vX[j + (vX.Length - vO[i].Length)] - vX[j]) != 0)
+                            {
+                                vO[i][j] = (vO[i - 1][j + 1] - vO[i - 1][j]) / (vX[j + (vX.Length - vO[i].Length)] - vX[j]);
+                            }
+                                else
+                            {
+                                MessageBox.Show("vO[" + i + "][" + j + "] Es = 0 ya que divicion por 0");
+                                vO[i][j] = 0;
+                            }
+                    }
 
                     }
                 }
