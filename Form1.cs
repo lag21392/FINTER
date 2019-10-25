@@ -117,7 +117,7 @@ namespace FINTER
                     }
                         
                 }
-                richTextBox_PolinomioPdeX.Text = "P(x) =";
+                richTextBox_PolinomioPdeX.Text = "L(x) =";
                 richTextBox_PolinomioPdeX.Text += polinomio;
 
             }
@@ -182,6 +182,29 @@ namespace FINTER
                 }
                 richTextBox_PolinomioPdeX.Text = "P(x) =";
                 richTextBox_PolinomioPdeX.Text += polinomio;
+
+                //Calculo e impresion de grado de polinomio
+                int G_de_Px = 0;
+                for (int i = 0; i < vO.Length; i++)
+                {
+                    int sumadorColumna = 0;
+                    for (int j = 0; j < vO[i].Length; j++)
+                    {
+                        sumadorColumna += vO[i][j];
+                    }
+                    if (sumadorColumna == 0)
+                    {
+
+                        i = vO.Length;
+                    }
+                    else
+                    {
+                        G_de_Px++;
+                    }
+                }
+                richTextBox_Pasos_Calculo.Text += "\n";
+                richTextBox_Pasos_Calculo.Text += "G(P(x)) = ";
+                richTextBox_Pasos_Calculo.Text += G_de_Px.ToString();
             }
             else if (radioButton_NG_Regresivo.Checked.Equals(true))
             {
@@ -243,7 +266,26 @@ namespace FINTER
                 richTextBox_PolinomioPdeX.Text = "P(x) =";
                 richTextBox_PolinomioPdeX.Text += polinomio;
 
-
+                //Calculo e impresion de grado de polinomio
+                int G_de_Px = 0;
+                for (int i = 0; i < vO.Length; i++)
+                {
+                    int sumadorColumna = 0;
+                    for(int j=0;j< vO[i].Length; j++)
+                    {
+                        sumadorColumna += vO[i][j];
+                    }
+                    if (sumadorColumna == 0)
+                    {
+                        
+                        i = vO.Length;
+                    }else {
+                        G_de_Px++;
+                    }
+                }
+                richTextBox_Pasos_Calculo.Text += "\n";
+                richTextBox_Pasos_Calculo.Text += "G(P(x)) = ";
+                richTextBox_Pasos_Calculo.Text += G_de_Px.ToString();
 
 
             }
