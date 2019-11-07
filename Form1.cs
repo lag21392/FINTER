@@ -19,7 +19,7 @@ namespace FINTER
         public Form1()
         {
             InitializeComponent();
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -57,16 +57,16 @@ namespace FINTER
             string X = richTextBox_Lote_Datos_X.Text;
             string Y = richTextBox_Lote_Datos_Y.Text;
             //validacion de datos antes de hallar polinomio
-            
+
             //Validar Formato datos X e Y
-            if(!Validar.SoloFormatoDatos(X,"X") || !Validar.SoloFormatoDatos(Y, "Y"))
+            if (!Validar.SoloFormatoDatos(X, "X") || !Validar.SoloFormatoDatos(Y, "Y"))
             {
-                
-            }else if(Regex.Replace(X,@"[0-9\-]", string.Empty) != Regex.Replace(Y,@"[0-9\-]", string.Empty)) {
+
+            } else if (Regex.Replace(X, @"[0-9\-]", string.Empty) != Regex.Replace(Y, @"[0-9\-]", string.Empty)) {
                 //Validar misma cantidad de numeros entre X e Y
                 MessageBox.Show("No hay la misma cantidad de valores entre X y f(x)");
-                
-            }else if(radioButton_Lagrange.Checked.Equals(true))
+
+            } else if (radioButton_Lagrange.Checked.Equals(true))
             //Comprobar Tipo de resolucion a hallar
             {
                 //Lagrange
@@ -74,13 +74,13 @@ namespace FINTER
                 int cantidadValoresXeY = Regex.Replace(X, @"[0-9\-]", string.Empty).Length - 1;
                 int[] vX = new int[cantidadValoresXeY];
                 int[] vY = new int[cantidadValoresXeY];
-                richTextBox_Pasos_Calculo.Text= CargarVectoresXeY(X, Y, vX, vY)+"\n";
+                richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY) + "\n";
 
                 //carga de vector vL
                 string[] vPL = new string[cantidadValoresXeY];
                 int[] vL = new int[cantidadValoresXeY];
                 polinomio = "";
-                for (int i =0; i < cantidadValoresXeY; i++)
+                for (int i = 0; i < cantidadValoresXeY; i++)
                 {
                     vPL[i] = "";
                     for (int j = 0; j < cantidadValoresXeY; j++)
@@ -95,12 +95,12 @@ namespace FINTER
                             {
                                 vPL[i] += "*(x-" + vX[j].ToString() + ")";
                             }
-                            
-                            vL[i] = vL[i]*(vX[i] - vX[j]);
+
+                            vL[i] = vL[i] * (vX[i] - vX[j]);
                         }
 
                     }
-                    richTextBox_Pasos_Calculo.Text += "L" + i + "(x) = " + vPL[i]+"    ";
+                    richTextBox_Pasos_Calculo.Text += "L" + i + "(x) = " + vPL[i] + "    ";
                     richTextBox_Pasos_Calculo.Text += "L" + i + "(" + vX[i] + ") = " + CalcularExprecion(vPL[i], vX[i]);
                     richTextBox_Pasos_Calculo.Text += "\n\n";
                     if (CalcularExprecion(vPL[i], vX[i]) == 0)
@@ -115,7 +115,7 @@ namespace FINTER
                     {
                         polinomio += " + (" + vY[i] + "/" + CalcularExprecion(vPL[i], vX[i]) + ")*" + vPL[i];
                     }
-                        
+
                 }
                 richTextBox_PolinomioPdeX.Text = "L(x) =";
                 richTextBox_PolinomioPdeX.Text += polinomio;
@@ -133,47 +133,47 @@ namespace FINTER
                 //carga de vector vO metodo general son los o1 o2 o3 etc
                 //se crea y se genere tabla de vectores con su tamaño correspondiente a cada uno
                 int[][] vO = new int[cantidadValoresXeY - 1][];
-                for(int i = 0; i < cantidadValoresXeY - 1; i++)
+                for (int i = 0; i < cantidadValoresXeY - 1; i++)
                 {
                     vO[i] = new int[cantidadValoresXeY - 1 - i];
-                    for(int j = 0; j < vO[i].Length; j++)
+                    for (int j = 0; j < vO[i].Length; j++)
                     {
                         if (i == 0)
                         {
-                            if((vX[j + 1] - vX[j]) != 0)
+                            if ((vX[j + 1] - vX[j]) != 0)
                             {
                                 vO[i][j] = (vY[j + 1] - vY[j]) / (vX[j + 1] - vX[j]);
                             }
                             else
                             {
-                                MessageBox.Show("vO[" + i+"][" + j + "] Es = 0 ya que divicion por 0");
+                                MessageBox.Show("vO[" + i + "][" + j + "] Es = 0 ya que divicion por 0");
                                 vO[i][j] = 0;
                             }
-                            
+
                         }
                         else
                         {
                             if ((vX[j + (vX.Length - vO[i].Length)] - vX[j]) != 0)
                             {
-                                vO[i][j] = (vO[i-1][j + 1] - vO[i-1][j]) / (vX[j+ (vX.Length-vO[i].Length) ] - vX[j]);
+                                vO[i][j] = (vO[i - 1][j + 1] - vO[i - 1][j]) / (vX[j + (vX.Length - vO[i].Length)] - vX[j]);
                             }
-                                else
+                            else
                             {
                                 MessageBox.Show("vO[" + i + "][" + j + "] Es = 0 ya que divicion por 0");
                                 vO[i][j] = 0;
                             }
-                    }
-                        
+                        }
+
                     }
                 }
                 string polinomio = "";
-                polinomio += vY[0].ToString() ;
-                for(int i = 0; i < vO.Length; i++)
+                polinomio += vY[0].ToString();
+                for (int i = 0; i < vO.Length; i++)
                 {
                     if (vO[i][0] != 0)
                     {
                         polinomio += "+" + vO[i][0].ToString();
-                        for (int x = 0; x <= i ; x++)
+                        for (int x = 0; x <= i; x++)
                         {
                             polinomio += "*(x-" + vX[x].ToString() + ")";
                         }
@@ -225,40 +225,40 @@ namespace FINTER
                     {
                         if (i == 0)
                         {
-                            if((vX[j + 1] - vX[j]) != 0) { 
-                            vO[i][j] = (vY[j + 1] - vY[j]) / (vX[j + 1] - vX[j]);
+                            if ((vX[j + 1] - vX[j]) != 0) {
+                                vO[i][j] = (vY[j + 1] - vY[j]) / (vX[j + 1] - vX[j]);
                             }
                             else
                             {
                                 MessageBox.Show("vO[" + i + "][" + j + "] Es = 0 ya que divicion por 0");
                                 vO[i][j] = 0;
                             }
-                    }
+                        }
                         else
                         {
                             if ((vX[j + (vX.Length - vO[i].Length)] - vX[j]) != 0)
                             {
                                 vO[i][j] = (vO[i - 1][j + 1] - vO[i - 1][j]) / (vX[j + (vX.Length - vO[i].Length)] - vX[j]);
                             }
-                                else
+                            else
                             {
                                 MessageBox.Show("vO[" + i + "][" + j + "] Es = 0 ya que divicion por 0");
                                 vO[i][j] = 0;
                             }
-                    }
+                        }
 
                     }
                 }
                 string polinomio = "";
-                polinomio += vY[vY.Length-1].ToString();
+                polinomio += vY[vY.Length - 1].ToString();
                 for (int i = 0; i < vO.Length; i++)
                 {
                     if (vO[i][vO[i].Length - 1] != 0)
                     {
-                        polinomio += "+" + vO[i][vO[i].Length-1].ToString();
-                        for (int x = 0; x <= i ; x++)
+                        polinomio += "+" + vO[i][vO[i].Length - 1].ToString();
+                        for (int x = 0; x <= i; x++)
                         {
-                            polinomio += "*(x-" + vX[vX.Length-1-x].ToString() + ")";
+                            polinomio += "*(x-" + vX[vX.Length - 1 - x].ToString() + ")";
                         }
                     }
 
@@ -271,15 +271,15 @@ namespace FINTER
                 for (int i = 0; i < vO.Length; i++)
                 {
                     int sumadorColumna = 0;
-                    for(int j=0;j< vO[i].Length; j++)
+                    for (int j = 0; j < vO[i].Length; j++)
                     {
                         sumadorColumna += vO[i][j];
                     }
                     if (sumadorColumna == 0)
                     {
-                        
+
                         i = vO.Length;
-                    }else {
+                    } else {
                         G_de_Px++;
                     }
                 }
@@ -293,9 +293,32 @@ namespace FINTER
             {
                 MessageBox.Show("No selecciono metodo de resolucion");
             }
-
         }
-
+        private void verfifica_equidistancia(int[] vx)
+        {
+            int i = 0;
+            int distancia;
+            int distancia_proximo;
+            distancia = vx[i + 1] - vx[i];
+            
+           // distancia_proximo = distancia;
+            do {
+                distancia_proximo = vx[i + 1] - vx[i];
+                i++;
+            }
+            while (distancia.Equals(distancia_proximo) && i<vx.Length-1);
+            if (distancia==distancia_proximo)
+            {
+                label6.Visible = true;
+                equidistanteTexto.Text ="SI";
+                
+            }
+            else
+            {
+                label6.Visible = true;
+                equidistanteTexto.Text ="NO";
+            }
+        }
         private void Button_Resolver_Click(object sender, EventArgs e)
         {
             //comprovacion de si hay numero k
@@ -305,15 +328,15 @@ namespace FINTER
             }
             else
             {
-                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(richTextBox_PolinomioPdeX.Text.Replace("P(x) =",""), Convert.ToInt32(textBox_Valor_K.Text)));
+                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(richTextBox_PolinomioPdeX.Text.Replace("P(x) =", ""), Convert.ToInt32(textBox_Valor_K.Text)));
             }
-            
+
         }
 
 
         public static String CargarVectoresXeY(string X, string Y, int[] vX, int[] vY)
         {
-            String consola="|  X  |  Y  | \n" ;
+            String consola = "|  X  |  Y  | \n";
             int cantidadValoresXeY = Regex.Replace(X, @"[0-9\-]", string.Empty).Length - 1;
             //paso a formato de (1,3,8) a 1,3,8,
             string remplazoX = Regex.Replace(X, @"[()]", string.Empty) + ",";
@@ -333,16 +356,16 @@ namespace FINTER
 
 
 
-               consola += " | " + vX[i].ToString() + " | " + vY[i].ToString() + " | " + "\n";
+                consola += " | " + vX[i].ToString() + " | " + vY[i].ToString() + " | " + "\n";
             }
             return consola;
         }
-        public static double CalcularExprecion(string expression,int x)
+        public static double CalcularExprecion(string expression, int x)
         {
             double fx;
             Calculo AnalizadorDeFunciones = new Calculo();
 
-            if (AnalizadorDeFunciones.Sintaxis(expression, 'x')) 
+            if (AnalizadorDeFunciones.Sintaxis(expression, 'x'))
             {
                 fx = AnalizadorDeFunciones.EvaluaFx(x);
 
@@ -356,6 +379,10 @@ namespace FINTER
             return -1;
         }
 
+        private void finalizar() {
+            Close();
+        }
+
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -364,6 +391,11 @@ namespace FINTER
         private void RichTextBox_PolinomioPdeX_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void finalizar(object sender, EventArgs e)
+        {
+            finalizar();
         }
     }
 }
