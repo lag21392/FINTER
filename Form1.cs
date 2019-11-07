@@ -65,7 +65,7 @@ namespace FINTER
             }else if(Regex.Replace(loteX,@"[0-9\-]", string.Empty) != Regex.Replace(loteY,@"[0-9\-]", string.Empty)) {
                 //Validar misma cantidad de numeros entre X e Y
                 MessageBox.Show("No hay la misma cantidad de valores entre X y f(x)");
-                
+                return;
             }
 
             int cantidadValoresXeY = Regex.Replace(loteX, @"[0-9\-]", string.Empty).Length - 1;
