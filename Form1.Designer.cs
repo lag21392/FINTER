@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox_Polinomio_De = new System.Windows.Forms.GroupBox();
-            this.radioButton_NG_Regresivo = new System.Windows.Forms.RadioButton();
-            this.radioButton_NG_Progresivo = new System.Windows.Forms.RadioButton();
-            this.radioButton_Lagrange = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
             this.richTextBox_Pasos_Calculo = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.richTextBox_PolinomioPdeX = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.radioButton_NG_Regresivo = new System.Windows.Forms.RadioButton();
+            this.radioButton_NG_Progresivo = new System.Windows.Forms.RadioButton();
+            this.radioButton_Lagrange = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.richTextBox_Lote_Datos_Y = new System.Windows.Forms.RichTextBox();
@@ -49,6 +49,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button_Resolver = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.equidistanteTexto = new System.Windows.Forms.Label();
             this.groupBox_Polinomio_De.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -67,20 +69,75 @@
             this.groupBox_Polinomio_De.Controls.Add(this.radioButton_NG_Regresivo);
             this.groupBox_Polinomio_De.Controls.Add(this.radioButton_NG_Progresivo);
             this.groupBox_Polinomio_De.Controls.Add(this.radioButton_Lagrange);
-            this.groupBox_Polinomio_De.Location = new System.Drawing.Point(11, 128);
+            this.groupBox_Polinomio_De.Location = new System.Drawing.Point(15, 158);
+            this.groupBox_Polinomio_De.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox_Polinomio_De.Name = "groupBox_Polinomio_De";
+            this.groupBox_Polinomio_De.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox_Polinomio_De.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox_Polinomio_De.Size = new System.Drawing.Size(793, 471);
+            this.groupBox_Polinomio_De.Size = new System.Drawing.Size(1057, 580);
             this.groupBox_Polinomio_De.TabIndex = 2;
             this.groupBox_Polinomio_De.TabStop = false;
             this.groupBox_Polinomio_De.Text = "Calculo de polinomio P(x):";
             // 
+            // richTextBox_Pasos_Calculo
+            // 
+            this.richTextBox_Pasos_Calculo.Location = new System.Drawing.Point(5, 69);
+            this.richTextBox_Pasos_Calculo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox_Pasos_Calculo.Name = "richTextBox_Pasos_Calculo";
+            this.richTextBox_Pasos_Calculo.ReadOnly = true;
+            this.richTextBox_Pasos_Calculo.Size = new System.Drawing.Size(1031, 397);
+            this.richTextBox_Pasos_Calculo.TabIndex = 11;
+            this.richTextBox_Pasos_Calculo.Text = "";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(873, 20);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 28);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Hallar Polinomio";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button_HallarPolinomio_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 49);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 17);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Pasos de calculo:";
+            // 
+            // richTextBox_PolinomioPdeX
+            // 
+            this.richTextBox_PolinomioPdeX.Location = new System.Drawing.Point(5, 490);
+            this.richTextBox_PolinomioPdeX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox_PolinomioPdeX.Name = "richTextBox_PolinomioPdeX";
+            this.richTextBox_PolinomioPdeX.ReadOnly = true;
+            this.richTextBox_PolinomioPdeX.Size = new System.Drawing.Size(1029, 66);
+            this.richTextBox_PolinomioPdeX.TabIndex = 13;
+            this.richTextBox_PolinomioPdeX.Text = "";
+            this.richTextBox_PolinomioPdeX.TextChanged += new System.EventHandler(this.RichTextBox_PolinomioPdeX_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 470);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(102, 17);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Polinomio P(x):";
+            // 
             // radioButton_NG_Regresivo
             // 
             this.radioButton_NG_Regresivo.AutoSize = true;
-            this.radioButton_NG_Regresivo.Location = new System.Drawing.Point(239, 19);
+            this.radioButton_NG_Regresivo.Location = new System.Drawing.Point(319, 23);
+            this.radioButton_NG_Regresivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton_NG_Regresivo.Name = "radioButton_NG_Regresivo";
-            this.radioButton_NG_Regresivo.Size = new System.Drawing.Size(153, 17);
+            this.radioButton_NG_Regresivo.Size = new System.Drawing.Size(200, 21);
             this.radioButton_NG_Regresivo.TabIndex = 2;
             this.radioButton_NG_Regresivo.TabStop = true;
             this.radioButton_NG_Regresivo.Text = "Newton Gregory Regresivo";
@@ -89,9 +146,10 @@
             // radioButton_NG_Progresivo
             // 
             this.radioButton_NG_Progresivo.AutoSize = true;
-            this.radioButton_NG_Progresivo.Location = new System.Drawing.Point(78, 20);
+            this.radioButton_NG_Progresivo.Location = new System.Drawing.Point(104, 25);
+            this.radioButton_NG_Progresivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton_NG_Progresivo.Name = "radioButton_NG_Progresivo";
-            this.radioButton_NG_Progresivo.Size = new System.Drawing.Size(155, 17);
+            this.radioButton_NG_Progresivo.Size = new System.Drawing.Size(204, 21);
             this.radioButton_NG_Progresivo.TabIndex = 1;
             this.radioButton_NG_Progresivo.TabStop = true;
             this.radioButton_NG_Progresivo.Text = "Newton Gregory Progresivo";
@@ -100,60 +158,14 @@
             // radioButton_Lagrange
             // 
             this.radioButton_Lagrange.AutoSize = true;
-            this.radioButton_Lagrange.Location = new System.Drawing.Point(7, 20);
+            this.radioButton_Lagrange.Location = new System.Drawing.Point(9, 25);
+            this.radioButton_Lagrange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton_Lagrange.Name = "radioButton_Lagrange";
-            this.radioButton_Lagrange.Size = new System.Drawing.Size(70, 17);
+            this.radioButton_Lagrange.Size = new System.Drawing.Size(90, 21);
             this.radioButton_Lagrange.TabIndex = 0;
             this.radioButton_Lagrange.TabStop = true;
             this.radioButton_Lagrange.Text = "Lagrange";
             this.radioButton_Lagrange.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(655, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Hallar Polinomio";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button_HallarPolinomio_Click);
-            // 
-            // richTextBox_Pasos_Calculo
-            // 
-            this.richTextBox_Pasos_Calculo.Location = new System.Drawing.Point(4, 56);
-            this.richTextBox_Pasos_Calculo.Name = "richTextBox_Pasos_Calculo";
-            this.richTextBox_Pasos_Calculo.ReadOnly = true;
-            this.richTextBox_Pasos_Calculo.Size = new System.Drawing.Size(774, 323);
-            this.richTextBox_Pasos_Calculo.TabIndex = 11;
-            this.richTextBox_Pasos_Calculo.Text = "";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Pasos de calculo:";
-            // 
-            // richTextBox_PolinomioPdeX
-            // 
-            this.richTextBox_PolinomioPdeX.Location = new System.Drawing.Point(4, 398);
-            this.richTextBox_PolinomioPdeX.Name = "richTextBox_PolinomioPdeX";
-            this.richTextBox_PolinomioPdeX.ReadOnly = true;
-            this.richTextBox_PolinomioPdeX.Size = new System.Drawing.Size(773, 54);
-            this.richTextBox_PolinomioPdeX.TabIndex = 13;
-            this.richTextBox_PolinomioPdeX.Text = "";
-            this.richTextBox_PolinomioPdeX.TextChanged += new System.EventHandler(this.RichTextBox_PolinomioPdeX_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 382);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Polinomio P(x):";
             // 
             // groupBox1
             // 
@@ -161,9 +173,11 @@
             this.groupBox1.Controls.Add(this.richTextBox_Lote_Datos_Y);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.richTextBox_Lote_Datos_X);
-            this.groupBox1.Location = new System.Drawing.Point(12, 4);
+            this.groupBox1.Location = new System.Drawing.Point(16, 5);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(793, 118);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(1057, 145);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingreso de Datos:";
@@ -171,17 +185,19 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 63);
+            this.label4.Location = new System.Drawing.Point(15, 78);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(229, 13);
+            this.label4.Size = new System.Drawing.Size(309, 17);
             this.label4.TabIndex = 12;
             this.label4.Text = "Lote de datos Y (Formato: \"(f(x1),f(x2),...,f(xn)\"):";
             // 
             // richTextBox_Lote_Datos_Y
             // 
-            this.richTextBox_Lote_Datos_Y.Location = new System.Drawing.Point(7, 79);
+            this.richTextBox_Lote_Datos_Y.Location = new System.Drawing.Point(9, 97);
+            this.richTextBox_Lote_Datos_Y.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBox_Lote_Datos_Y.Name = "richTextBox_Lote_Datos_Y";
-            this.richTextBox_Lote_Datos_Y.Size = new System.Drawing.Size(773, 24);
+            this.richTextBox_Lote_Datos_Y.Size = new System.Drawing.Size(1029, 29);
             this.richTextBox_Lote_Datos_Y.TabIndex = 11;
             this.richTextBox_Lote_Datos_Y.Text = "";
             this.richTextBox_Lote_Datos_Y.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox_Lote_Datos_Y_KeyPress);
@@ -189,74 +205,85 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 20);
+            this.label1.Location = new System.Drawing.Point(15, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(205, 13);
+            this.label1.Size = new System.Drawing.Size(272, 17);
             this.label1.TabIndex = 10;
             this.label1.Text = "Lote de datos X (Formato: \"(x1,x2,...,xn)\"):";
             // 
             // richTextBox_Lote_Datos_X
             // 
-            this.richTextBox_Lote_Datos_X.Location = new System.Drawing.Point(7, 36);
+            this.richTextBox_Lote_Datos_X.Location = new System.Drawing.Point(9, 44);
+            this.richTextBox_Lote_Datos_X.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBox_Lote_Datos_X.Name = "richTextBox_Lote_Datos_X";
-            this.richTextBox_Lote_Datos_X.Size = new System.Drawing.Size(773, 24);
+            this.richTextBox_Lote_Datos_X.Size = new System.Drawing.Size(1029, 29);
             this.richTextBox_Lote_Datos_X.TabIndex = 9;
             this.richTextBox_Lote_Datos_X.Text = "";
             this.richTextBox_Lote_Datos_X.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox_Lote_Datos_X_KeyPress);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.equidistanteTexto);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.textBox_P_de_K);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.textBox_Valor_K);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.button_Resolver);
-            this.groupBox2.Location = new System.Drawing.Point(11, 605);
+            this.groupBox2.Location = new System.Drawing.Point(15, 745);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(793, 64);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(1057, 79);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Especializacion del polinomio en K:";
             // 
             // textBox_P_de_K
             // 
-            this.textBox_P_de_K.Location = new System.Drawing.Point(45, 39);
+            this.textBox_P_de_K.Location = new System.Drawing.Point(60, 48);
+            this.textBox_P_de_K.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_P_de_K.Name = "textBox_P_de_K";
             this.textBox_P_de_K.ReadOnly = true;
-            this.textBox_P_de_K.Size = new System.Drawing.Size(159, 20);
+            this.textBox_P_de_K.Size = new System.Drawing.Size(211, 22);
             this.textBox_P_de_K.TabIndex = 22;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 19);
+            this.label3.Location = new System.Drawing.Point(4, 23);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.Size = new System.Drawing.Size(29, 17);
             this.label3.TabIndex = 21;
             this.label3.Text = "K =";
             // 
             // textBox_Valor_K
             // 
-            this.textBox_Valor_K.Location = new System.Drawing.Point(45, 16);
+            this.textBox_Valor_K.Location = new System.Drawing.Point(60, 20);
+            this.textBox_Valor_K.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox_Valor_K.Name = "textBox_Valor_K";
-            this.textBox_Valor_K.Size = new System.Drawing.Size(159, 20);
+            this.textBox_Valor_K.Size = new System.Drawing.Size(211, 22);
             this.textBox_Valor_K.TabIndex = 20;
             this.textBox_Valor_K.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Valor_K_KeyPress);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 42);
+            this.label7.Location = new System.Drawing.Point(4, 52);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.Size = new System.Drawing.Size(48, 17);
             this.label7.TabIndex = 19;
             this.label7.Text = "P(K) =";
             // 
             // button_Resolver
             // 
-            this.button_Resolver.Location = new System.Drawing.Point(654, 32);
+            this.button_Resolver.Location = new System.Drawing.Point(872, 39);
+            this.button_Resolver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Resolver.Name = "button_Resolver";
-            this.button_Resolver.Size = new System.Drawing.Size(126, 23);
+            this.button_Resolver.Size = new System.Drawing.Size(168, 28);
             this.button_Resolver.TabIndex = 17;
             this.button_Resolver.Text = "Calcular P(K)";
             this.button_Resolver.UseVisualStyleBackColor = true;
@@ -264,27 +291,49 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(666, 675);
+            this.button2.Location = new System.Drawing.Point(888, 831);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 23);
+            this.button2.Size = new System.Drawing.Size(168, 28);
             this.button2.TabIndex = 19;
             this.button2.Text = "Finalizar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.finalizar);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(442, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(90, 17);
+            this.label6.TabIndex = 23;
+            this.label6.Tag = "";
+            this.label6.Text = "Equidistante:";
+            this.label6.Visible = false;
+            // 
+            // equidistanteTexto
+            // 
+            this.equidistanteTexto.AutoSize = true;
+            this.equidistanteTexto.Location = new System.Drawing.Point(529, 23);
+            this.equidistanteTexto.Name = "equidistanteTexto";
+            this.equidistanteTexto.Size = new System.Drawing.Size(0, 17);
+            this.equidistanteTexto.TabIndex = 24;
             // 
             // Form1
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ClientSize = new System.Drawing.Size(816, 701);
+            this.ClientSize = new System.Drawing.Size(1088, 863);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox_Polinomio_De);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "FINTER";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -321,6 +370,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button_Resolver;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label equidistanteTexto;
     }
 }
 
