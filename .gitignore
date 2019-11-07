@@ -110,3 +110,5 @@ Desktop.ini
 
 # Visual Studio Code
 .vscode/
+
+packages/
