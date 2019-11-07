@@ -129,6 +129,7 @@ namespace FINTER
                 int[] vX = new int[cantidadValoresXeY];
                 int[] vY = new int[cantidadValoresXeY];
                 richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY);
+                verfifica_equidistancia(vX);
 
                 //carga de vector vO metodo general son los o1 o2 o3 etc
                 //se crea y se genere tabla de vectores con su tamaño correspondiente a cada uno
@@ -214,6 +215,7 @@ namespace FINTER
                 int[] vX = new int[cantidadValoresXeY];
                 int[] vY = new int[cantidadValoresXeY];
                 richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY);
+                verfifica_equidistancia(vX);
 
                 //carga de vector vO metodo general son los o1 o2 o3 etc
                 //se crea y se genere tabla de vectores con su tamaño correspondiente a cada uno
