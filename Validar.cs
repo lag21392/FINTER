@@ -104,7 +104,7 @@ namespace FINTER
         }
         public static bool SoloFormatoDatos(String v,String coment)
         {
-            if (v != "" && v.First().ToString().Equals("(") && v.Last().ToString().Equals(")") && !v.ToString().Contains(",,") )
+            if (v != "" && v.First().ToString().Equals("(") && v.Last().ToString().Equals(")") && !v.ToString().Contains(",,") && !v.Contains("()") )
             {
                 //controlo el interior de entre los parentesis
                 String interiorV = v.Substring(1, v.Length-2);

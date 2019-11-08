@@ -117,8 +117,23 @@ namespace FINTER
                     }
 
                 }
-                richTextBox_PolinomioPdeX.Text = "L(x) =";
+
+                //Validacion de si hay polinomiodistinto
+                if (richTextBox_PolinomioPdeX.Text != "L(x) = " + polinomio)
+                {
+                    richTextBoxPolinomioDistinto.Text = "SI";
+                }
+                else
+                {
+                    richTextBoxPolinomioDistinto.Text = "NO";
+                }
+
+                richTextBox_PolinomioPdeX.Text = "L(x) = ";
                 richTextBox_PolinomioPdeX.Text += polinomio;
+
+                //Preguntar como sacar grado de polinomio de lagrange
+                //richTextBoxGdeX.Text += "G(L(x)) = ";
+                //richTextBoxGdeX.Text += G_de_Px.ToString();
 
             }
             else if (radioButton_NG_Progresivo.Checked.Equals(true))
@@ -181,7 +196,18 @@ namespace FINTER
                     }
 
                 }
-                richTextBox_PolinomioPdeX.Text = "P(x) =";
+
+                //Validacion de si hay polinomiodistinto
+                if (richTextBox_PolinomioPdeX.Text != "P(x) = " + polinomio)
+                {
+                    richTextBoxPolinomioDistinto.Text = "SI";
+                }
+                else
+                {
+                    richTextBoxPolinomioDistinto.Text = "NO";
+                }
+
+                richTextBox_PolinomioPdeX.Text = "P(x) = ";
                 richTextBox_PolinomioPdeX.Text += polinomio;
 
                 //Calculo e impresion de grado de polinomio
@@ -203,9 +229,8 @@ namespace FINTER
                         G_de_Px++;
                     }
                 }
-                richTextBox_Pasos_Calculo.Text += "\n";
-                richTextBox_Pasos_Calculo.Text += "G(P(x)) = ";
-                richTextBox_Pasos_Calculo.Text += G_de_Px.ToString();
+                richTextBoxGdeX.Text = "G(P(x)) = ";
+                richTextBoxGdeX.Text += G_de_Px.ToString();
             }
             else if (radioButton_NG_Regresivo.Checked.Equals(true))
             {
@@ -265,7 +290,19 @@ namespace FINTER
                     }
 
                 }
-                richTextBox_PolinomioPdeX.Text = "P(x) =";
+
+
+                //Validacion de si hay polinomiodistinto
+                if(richTextBox_PolinomioPdeX.Text!= "P(x) = " + polinomio)
+                {
+                    richTextBoxPolinomioDistinto.Text = "SI";
+                }
+                else
+                {
+                    richTextBoxPolinomioDistinto.Text = "NO";
+                }
+                
+                richTextBox_PolinomioPdeX.Text = "P(x) = ";
                 richTextBox_PolinomioPdeX.Text += polinomio;
 
                 //Calculo e impresion de grado de polinomio
@@ -285,9 +322,9 @@ namespace FINTER
                         G_de_Px++;
                     }
                 }
-                richTextBox_Pasos_Calculo.Text += "\n";
-                richTextBox_Pasos_Calculo.Text += "G(P(x)) = ";
-                richTextBox_Pasos_Calculo.Text += G_de_Px.ToString();
+                
+                richTextBoxGdeX.Text = "G(P(x)) = ";
+                richTextBoxGdeX.Text += G_de_Px.ToString();
 
 
             }
@@ -312,13 +349,15 @@ namespace FINTER
             if (distancia==distancia_proximo)
             {
                 label6.Visible = true;
-                equidistanteTexto.Text ="SI";
+                richTextBoxEquidistanteTexto.Visible = true;
+                richTextBoxEquidistanteTexto.Text ="SI";
                 
             }
             else
             {
                 label6.Visible = true;
-                equidistanteTexto.Text ="NO";
+                richTextBoxEquidistanteTexto.Visible = true;
+                richTextBoxEquidistanteTexto.Text ="NO";
             }
         }
         private void Button_Resolver_Click(object sender, EventArgs e)
@@ -330,7 +369,7 @@ namespace FINTER
             }
             else
             {
-                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(richTextBox_PolinomioPdeX.Text.Replace("P(x) =", ""), Convert.ToInt32(textBox_Valor_K.Text)));
+                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", ""), Convert.ToInt32(textBox_Valor_K.Text)));
             }
 
         }
@@ -398,6 +437,16 @@ namespace FINTER
         private void finalizar(object sender, EventArgs e)
         {
             finalizar();
+        }
+
+        private void EquidistanteTexto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
