@@ -31,15 +31,7 @@ namespace FINTER
 
         public static void SoloNumeros(KeyPressEventArgs v)
         {
-            if (Char.IsDigit(v.KeyChar))
-            {
-                v.Handled = false;
-            }
-            else if (Char.IsSeparator(v.KeyChar))
-            {
-                v.Handled = false;
-            }
-            else if (Char.IsControl(v.KeyChar))
+            if (Char.IsDigit(v.KeyChar) || Char.IsSeparator(v.KeyChar) || Char.IsControl(v.KeyChar) || v.KeyChar.ToString().Equals("-"))
             {
                 v.Handled = false;
             }
@@ -76,23 +68,7 @@ namespace FINTER
         }
         public static void SoloParentesisComasNumeros(KeyPressEventArgs v)
         {
-            if (Char.IsDigit(v.KeyChar))
-            {
-                v.Handled = false;
-            }
-            else if (Char.IsControl(v.KeyChar))
-            {
-                v.Handled = false;
-            }
-            else if (v.KeyChar.ToString().Equals("("))
-            {
-                v.Handled = false;
-            }
-            else if (v.KeyChar.ToString().Equals(")"))
-            {
-                v.Handled = false;
-            }
-            else if (v.KeyChar.ToString().Equals(","))
+            if (Char.IsDigit(v.KeyChar) || Char.IsControl(v.KeyChar) || v.KeyChar.ToString().Equals("(") || v.KeyChar.ToString().Equals(")") || v.KeyChar.ToString().Equals(",") || v.KeyChar.ToString().Equals("-"))
             {
                 v.Handled = false;
             }
