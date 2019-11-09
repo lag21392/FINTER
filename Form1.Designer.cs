@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox_Polinomio_De = new System.Windows.Forms.GroupBox();
+            this.richTextBoxPolinomioDistinto = new System.Windows.Forms.RichTextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.richTextBoxEquidistanteTexto = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxGdeX = new System.Windows.Forms.RichTextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.richTextBox_Pasos_Calculo = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,18 +49,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBox_Lote_Datos_X = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.textBox_P_de_K = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_Valor_K = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button_Resolver = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.richTextBoxGdeX = new System.Windows.Forms.RichTextBox();
-            this.richTextBoxEquidistanteTexto = new System.Windows.Forms.RichTextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.richTextBoxPolinomioDistinto = new System.Windows.Forms.RichTextBox();
             this.groupBox_Polinomio_De.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -86,6 +86,64 @@
             this.groupBox_Polinomio_De.TabIndex = 2;
             this.groupBox_Polinomio_De.TabStop = false;
             this.groupBox_Polinomio_De.Text = "Calculo de polinomio P(x):";
+            // 
+            // richTextBoxPolinomioDistinto
+            // 
+            this.richTextBoxPolinomioDistinto.Location = new System.Drawing.Point(108, 338);
+            this.richTextBoxPolinomioDistinto.Name = "richTextBoxPolinomioDistinto";
+            this.richTextBoxPolinomioDistinto.ReadOnly = true;
+            this.richTextBoxPolinomioDistinto.Size = new System.Drawing.Size(35, 22);
+            this.richTextBoxPolinomioDistinto.TabIndex = 29;
+            this.richTextBoxPolinomioDistinto.Text = "";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1, 347);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 13);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Se altero Polinomio:";
+            // 
+            // richTextBoxEquidistanteTexto
+            // 
+            this.richTextBoxEquidistanteTexto.Location = new System.Drawing.Point(108, 366);
+            this.richTextBoxEquidistanteTexto.Name = "richTextBoxEquidistanteTexto";
+            this.richTextBoxEquidistanteTexto.ReadOnly = true;
+            this.richTextBoxEquidistanteTexto.Size = new System.Drawing.Size(35, 22);
+            this.richTextBoxEquidistanteTexto.TabIndex = 27;
+            this.richTextBoxEquidistanteTexto.Text = "";
+            this.richTextBoxEquidistanteTexto.Visible = false;
+            // 
+            // richTextBoxGdeX
+            // 
+            this.richTextBoxGdeX.Location = new System.Drawing.Point(108, 310);
+            this.richTextBoxGdeX.Name = "richTextBoxGdeX";
+            this.richTextBoxGdeX.ReadOnly = true;
+            this.richTextBoxGdeX.Size = new System.Drawing.Size(88, 22);
+            this.richTextBoxGdeX.TabIndex = 26;
+            this.richTextBoxGdeX.Text = "";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(1, 319);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(101, 13);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Grado de polinomio:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1, 375);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Tag = "";
+            this.label6.Text = "Equidistante:";
+            this.label6.Visible = false;
             // 
             // richTextBox_Pasos_Calculo
             // 
@@ -231,18 +289,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Especializacion del polinomio en K:";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1, 375);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Tag = "";
-            this.label6.Text = "Equidistante:";
-            this.label6.Visible = false;
-            // 
             // textBox_P_de_K
             // 
             this.textBox_P_de_K.Location = new System.Drawing.Point(45, 39);
@@ -296,52 +342,6 @@
             this.button2.Text = "Finalizar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.finalizar);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1, 319);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 13);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "Grado de polinomio:";
-            // 
-            // richTextBoxGdeX
-            // 
-            this.richTextBoxGdeX.Location = new System.Drawing.Point(108, 310);
-            this.richTextBoxGdeX.Name = "richTextBoxGdeX";
-            this.richTextBoxGdeX.ReadOnly = true;
-            this.richTextBoxGdeX.Size = new System.Drawing.Size(88, 22);
-            this.richTextBoxGdeX.TabIndex = 26;
-            this.richTextBoxGdeX.Text = "";
-            // 
-            // richTextBoxEquidistanteTexto
-            // 
-            this.richTextBoxEquidistanteTexto.Location = new System.Drawing.Point(108, 366);
-            this.richTextBoxEquidistanteTexto.Name = "richTextBoxEquidistanteTexto";
-            this.richTextBoxEquidistanteTexto.ReadOnly = true;
-            this.richTextBoxEquidistanteTexto.Size = new System.Drawing.Size(35, 22);
-            this.richTextBoxEquidistanteTexto.TabIndex = 27;
-            this.richTextBoxEquidistanteTexto.Text = "";
-            this.richTextBoxEquidistanteTexto.Visible = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1, 347);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(93, 13);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "Polinomio Distinto:";
-            // 
-            // richTextBoxPolinomioDistinto
-            // 
-            this.richTextBoxPolinomioDistinto.Location = new System.Drawing.Point(108, 338);
-            this.richTextBoxPolinomioDistinto.Name = "richTextBoxPolinomioDistinto";
-            this.richTextBoxPolinomioDistinto.ReadOnly = true;
-            this.richTextBoxPolinomioDistinto.Size = new System.Drawing.Size(35, 22);
-            this.richTextBoxPolinomioDistinto.TabIndex = 29;
-            this.richTextBoxPolinomioDistinto.Text = "";
             // 
             // Form1
             // 

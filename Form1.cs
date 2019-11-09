@@ -128,6 +128,11 @@ namespace FINTER
                     richTextBoxPolinomioDistinto.Text = "NO";
                 }
 
+                //Comparamos polinomio anterior con el nuevo
+                String polinomioAnterior = richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", "");
+                richTextBoxPolinomioDistinto.Text = SeAlteroPolinomio(polinomioAnterior, polinomio, vX);
+
+
                 richTextBox_PolinomioPdeX.Text = "L(x) = ";
                 richTextBox_PolinomioPdeX.Text += polinomio;
 
@@ -138,6 +143,7 @@ namespace FINTER
             }
             else if (radioButton_NG_Progresivo.Checked.Equals(true))
             {
+
                 //NG_progresivo
                 //carga de datos vector vX y vY
                 int cantidadValoresXeY = Regex.Replace(X, @"[0-9\-]", string.Empty).Length - 1;
@@ -196,16 +202,11 @@ namespace FINTER
                     }
 
                 }
-
+                //Comparamos polinomio anterior con el nuevo
+                String polinomioAnterior = richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", "");
+                richTextBoxPolinomioDistinto.Text = SeAlteroPolinomio(polinomioAnterior, polinomio, vX);
                 //Validacion de si hay polinomiodistinto
-                if (richTextBox_PolinomioPdeX.Text != "P(x) = " + polinomio)
-                {
-                    richTextBoxPolinomioDistinto.Text = "SI";
-                }
-                else
-                {
-                    richTextBoxPolinomioDistinto.Text = "NO";
-                }
+
 
                 richTextBox_PolinomioPdeX.Text = "P(x) = ";
                 richTextBox_PolinomioPdeX.Text += polinomio;
@@ -292,16 +293,10 @@ namespace FINTER
                 }
 
 
-                //Validacion de si hay polinomiodistinto
-                if(richTextBox_PolinomioPdeX.Text!= "P(x) = " + polinomio)
-                {
-                    richTextBoxPolinomioDistinto.Text = "SI";
-                }
-                else
-                {
-                    richTextBoxPolinomioDistinto.Text = "NO";
-                }
-                
+                //Comparamos polinomio anterior con el nuevo
+                String polinomioAnterior = richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", "");
+                richTextBoxPolinomioDistinto.Text = SeAlteroPolinomio(polinomioAnterior, polinomio, vX);
+
                 richTextBox_PolinomioPdeX.Text = "P(x) = ";
                 richTextBox_PolinomioPdeX.Text += polinomio;
 
@@ -422,6 +417,16 @@ namespace FINTER
 
         private void finalizar() {
             Close();
+        }
+        private static String SeAlteroPolinomio(String polinomio1, String polinomio2,int[] vX)
+        {
+            for(int i = 0; i < vX.Length; i++) {
+                if (CalcularExprecion(polinomio1, vX[i]) != CalcularExprecion(polinomio2, vX[i]))
+                {
+                    return "SI";
+                }
+            }
+            return "NO";
         }
 
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
