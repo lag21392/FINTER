@@ -19,7 +19,8 @@ namespace FINTER
         public Form1()
         {
             InitializeComponent();
-
+            //richTextBox_Lote_Datos_X.Text="(2,3,4,5)";
+            //richTextBox_Lote_Datos_Y.Text="(1,2,4,7)";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -101,20 +102,20 @@ namespace FINTER
                         }
 
                     }
-                    richTextBox_Pasos_Calculo.Text += "L" + i + "(x) = " + vPL[i] + "    ";
-                    richTextBox_Pasos_Calculo.Text += "L" + i + "(" + vX[i] + ") = " + CalcularExprecion(vPL[i], vX[i]);
+                    richTextBox_Pasos_Calculo.Text += "L" + i + "(x) = " + vPL[i] + "         ";
+                    richTextBox_Pasos_Calculo.Text += "L" + i + "(" + vX[i] + ") = " + CalcularExprecion(vPL[i], vX[i], false);
                     richTextBox_Pasos_Calculo.Text += "\n\n";
-                    if (CalcularExprecion(vPL[i], vX[i]) == 0)
+                    if (CalcularExprecion(vPL[i], vX[i], false) == 0)
                     {
 
                     }
                     else if (polinomio == "")
                     {
-                        polinomio += " (" + vY[i] + "/" + CalcularExprecion(vPL[i], vX[i]) + ")*" + vPL[i];
+                        polinomio += " (" + vY[i] + "/" + CalcularExprecion(vPL[i], vX[i], false) + ")*" + vPL[i];
                     }
                     else
                     {
-                        polinomio += " + (" + vY[i] + "/" + CalcularExprecion(vPL[i], vX[i]) + ")*" + vPL[i];
+                        polinomio += " + (" + vY[i] + "/" + CalcularExprecion(vPL[i], vX[i], false) + ")*" + vPL[i];
                     }
 
                 }
@@ -135,7 +136,7 @@ namespace FINTER
 
 
                 richTextBox_PolinomioPdeX.Text = "L(x) = ";
-                richTextBox_PolinomioPdeX.Text += polinomio;
+                richTextBox_PolinomioPdeX.Text += polinomio.Replace("+-", "-");
 
                 //Preguntar como sacar grado de polinomio de lagrange
                 //richTextBoxGdeX.Text += "G(L(x)) = ";
@@ -155,10 +156,10 @@ namespace FINTER
 
                 //carga de vector vO metodo general son los o1 o2 o3 etc
                 //se crea y se genere tabla de vectores con su tamaño correspondiente a cada uno
-                int[][] vO = new int[cantidadValoresXeY - 1][];
+                double[][] vO = new double[cantidadValoresXeY - 1][];
                 for (int i = 0; i < cantidadValoresXeY - 1; i++)
                 {
-                    vO[i] = new int[cantidadValoresXeY - 1 - i];
+                    vO[i] = new double[cantidadValoresXeY - 1 - i];
                     for (int j = 0; j < vO[i].Length; j++)
                     {
                         if (i == 0)
@@ -225,13 +226,13 @@ namespace FINTER
 
 
                 richTextBox_PolinomioPdeX.Text = "P(x) = ";
-                richTextBox_PolinomioPdeX.Text += polinomio;
+                richTextBox_PolinomioPdeX.Text += polinomio.Replace("+-","-");
 
                 //Calculo e impresion de grado de polinomio
                 int G_de_Px = 0;
                 for (int i = 0; i < vO.Length; i++)
                 {
-                    int sumadorColumna = 0;
+                    double sumadorColumna = 0;
                     for (int j = 0; j < vO[i].Length; j++)
                     {
                         sumadorColumna += vO[i][j];
@@ -261,10 +262,10 @@ namespace FINTER
 
                 //carga de vector vO metodo general son los o1 o2 o3 etc
                 //se crea y se genere tabla de vectores con su tamaño correspondiente a cada uno
-                int[][] vO = new int[cantidadValoresXeY - 1][];
+                double[][] vO = new double[cantidadValoresXeY - 1][];
                 for (int i = 0; i < cantidadValoresXeY - 1; i++)
                 {
-                    vO[i] = new int[cantidadValoresXeY - 1 - i];
+                    vO[i] = new double[cantidadValoresXeY - 1 - i];
                     for (int j = 0; j < vO[i].Length; j++)
                     {
                         if (i == 0)
@@ -328,13 +329,13 @@ namespace FINTER
                 richTextBoxPolinomioDistinto.Text = SeAlteroPolinomio(polinomioAnterior, polinomio, vX);
 
                 richTextBox_PolinomioPdeX.Text = "P(x) = ";
-                richTextBox_PolinomioPdeX.Text += polinomio;
+                richTextBox_PolinomioPdeX.Text += polinomio.Replace("+-", "-");
 
                 //Calculo e impresion de grado de polinomio
                 int G_de_Px = 0;
                 for (int i = 0; i < vO.Length; i++)
                 {
-                    int sumadorColumna = 0;
+                    double sumadorColumna = 0;
                     for (int j = 0; j < vO[i].Length; j++)
                     {
                         sumadorColumna += vO[i][j];
@@ -394,7 +395,7 @@ namespace FINTER
             }
             else
             {
-                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", ""), Convert.ToInt32(textBox_Valor_K.Text)));
+                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", ""), Convert.ToInt32(textBox_Valor_K.Text),true));
             }
 
         }
@@ -402,7 +403,7 @@ namespace FINTER
 
         public static String CargarVectoresXeY(string X, string Y, int[] vX, int[] vY)
         {
-            String consola = "|  X  |  Y  | \n";
+            String consola = "| " +CentrarString("X",6)+ "  |  " + CentrarString("Y", 6) + "  | \n";
             int cantidadValoresXeY = Regex.Replace(X, @"[0-9\-]", string.Empty).Length - 1;
             //paso a formato de (1,3,8) a 1,3,8,
             string remplazoX = Regex.Replace(X, @"[()]", string.Empty) + ",";
@@ -422,20 +423,64 @@ namespace FINTER
 
 
 
-                consola += " | " + vX[i].ToString() + " | " + vY[i].ToString() + " | " + "\n";
+                consola += " | " + CentrarString(vX[i].ToString(), 6);
+                consola += " | ";
+                consola += CentrarString(vY[i].ToString(), 6);
+                consola +=  " | " + "\n";
             }
             return consola;
         }
-        public static double CalcularExprecion(string expression, int x)
+        public  double CalcularExprecion(string expresion, double x,Boolean imprimir)
         {
+            expresion = expresion.Replace(",", ".");
+            if (imprimir == true) {
+                richTextBox_Pasos_Calculo.Text += "\n\n";
+                richTextBox_Pasos_Calculo.Text += "P(K) = " + expresion;
+            }
+
+            while (expresion.Contains("("))
+            
+            {
+                    int IndexPrimerParentesisAbierto = expresion.IndexOf('(');
+                    int IndexPrimerParentesisCerrado = expresion.IndexOf(')');
+                    string exprecionInteraAResolver = expresion.Substring(IndexPrimerParentesisAbierto + 1, IndexPrimerParentesisCerrado- IndexPrimerParentesisAbierto-1);
+                    
+
+                    double fxInterna;
+                    Calculo AnalizadorDeFuncionesInterna = new Calculo();
+
+                    if (AnalizadorDeFuncionesInterna.Sintaxis(exprecionInteraAResolver, 'x'))
+                    {
+                    fxInterna = AnalizadorDeFuncionesInterna.EvaluaFx(x);
+                    
+                    expresion = expresion.Replace(expresion.Substring(IndexPrimerParentesisAbierto , IndexPrimerParentesisCerrado - IndexPrimerParentesisAbierto +1), Math.Round(fxInterna, 10).ToString()).Replace(",", ".");
+                    
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mal la sintaxis de la funcionInterna");
+                        // aquí mensaje de error en sintaxis
+                    }
+            }
+            
+            if (imprimir == true)
+            {
+                richTextBox_Pasos_Calculo.Text += "\n\n";
+                richTextBox_Pasos_Calculo.Text += "P(" + x.ToString() + ") = " + expresion;
+            }
             double fx;
             Calculo AnalizadorDeFunciones = new Calculo();
 
-            if (AnalizadorDeFunciones.Sintaxis(expression, 'x'))
+            if (AnalizadorDeFunciones.Sintaxis(expresion, 'x'))
             {
                 fx = AnalizadorDeFunciones.EvaluaFx(x);
-
-                return fx;
+               
+                if (imprimir == true)
+                {
+                    richTextBox_Pasos_Calculo.Text += "\n\n";
+                    richTextBox_Pasos_Calculo.Text += "P(" + x.ToString() + ") = " + Math.Round(fx, 2).ToString();
+                }
+                return Math.Round(fx, 2);
             }
             else
             {
@@ -448,10 +493,15 @@ namespace FINTER
         private void finalizar() {
             Close();
         }
-        private static String SeAlteroPolinomio(String polinomio1, String polinomio2,int[] vX)
+        private  String SeAlteroPolinomio(String polinomio1, String polinomio2,int[] vX)
         {
+            if (polinomio1 == "")
+            {
+                return "";
+            }
             for(int i = 0; i < vX.Length; i++) {
-                if (CalcularExprecion(polinomio1, vX[i]) != CalcularExprecion(polinomio2, vX[i]))
+
+                if (Math.Round(CalcularExprecion(polinomio1, vX[i],false) -CalcularExprecion(polinomio2, vX[i],false),4)!=0.0000)
                 {
                     return "SI";
                 }
@@ -459,6 +509,13 @@ namespace FINTER
             return "NO";
         }
 
+        private static String CentrarString(String texto, int tamanioLugar)
+        {
+            int dondeTieneQueEmpesarTexto = (tamanioLugar / 2) - (texto.Length / 2);
+            int dondeTieneQueTerminarTexto = (tamanioLugar / 2) + (texto.Length / 2);
+            String textoConEspacios = texto;
+            return textoConEspacios.PadLeft(dondeTieneQueEmpesarTexto).PadRight(tamanioLugar-dondeTieneQueTerminarTexto);
+        }
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
 
