@@ -113,7 +113,6 @@
             this.richTextBoxEquidistanteTexto.Size = new System.Drawing.Size(35, 22);
             this.richTextBoxEquidistanteTexto.TabIndex = 27;
             this.richTextBoxEquidistanteTexto.Text = "";
-            this.richTextBoxEquidistanteTexto.Visible = false;
             // 
             // richTextBoxGdeX
             // 
@@ -129,9 +128,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(1, 319);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 13);
+            this.label8.Size = new System.Drawing.Size(102, 13);
             this.label8.TabIndex = 25;
-            this.label8.Text = "Grado de polinomio:";
+            this.label8.Text = "Grado de Polinomio:";
             // 
             // label6
             // 
@@ -143,7 +142,6 @@
             this.label6.TabIndex = 23;
             this.label6.Tag = "";
             this.label6.Text = "Equidistante:";
-            this.label6.Visible = false;
             // 
             // richTextBox_Pasos_Calculo
             // 

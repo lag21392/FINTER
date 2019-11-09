@@ -75,6 +75,7 @@ namespace FINTER
                 int[] vX = new int[cantidadValoresXeY];
                 int[] vY = new int[cantidadValoresXeY];
                 richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY) + "\n";
+                VerfificaEquidistancia(vX);
 
                 //carga de vector vL
                 string[] vPL = new string[cantidadValoresXeY];
@@ -150,7 +151,7 @@ namespace FINTER
                 int[] vX = new int[cantidadValoresXeY];
                 int[] vY = new int[cantidadValoresXeY];
                 richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY);
-                verfifica_equidistancia(vX);
+                VerfificaEquidistancia(vX);
 
                 //carga de vector vO metodo general son los o1 o2 o3 etc
                 //se crea y se genere tabla de vectores con su tamaño correspondiente a cada uno
@@ -202,6 +203,21 @@ namespace FINTER
                     }
 
                 }
+
+                //mostrar vectores O
+                richTextBox_Pasos_Calculo.Text += "\n Vectores O: ";
+
+                for (int i = 0; i < vO.Length; i++)
+                {
+                    richTextBox_Pasos_Calculo.Text += "\n | o" + i.ToString() + " | ";
+                    for (int j = 0; j < vO[i].Length; j++)
+                    {
+
+                        richTextBox_Pasos_Calculo.Text += vO[i][j].ToString() + " | ";
+
+
+                    }
+                }
                 //Comparamos polinomio anterior con el nuevo
                 String polinomioAnterior = richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", "");
                 richTextBoxPolinomioDistinto.Text = SeAlteroPolinomio(polinomioAnterior, polinomio, vX);
@@ -241,7 +257,7 @@ namespace FINTER
                 int[] vX = new int[cantidadValoresXeY];
                 int[] vY = new int[cantidadValoresXeY];
                 richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY);
-                verfifica_equidistancia(vX);
+                VerfificaEquidistancia(vX);
 
                 //carga de vector vO metodo general son los o1 o2 o3 etc
                 //se crea y se genere tabla de vectores con su tamaño correspondiente a cada uno
@@ -292,6 +308,20 @@ namespace FINTER
 
                 }
 
+                //mostrar vectores O
+                richTextBox_Pasos_Calculo.Text += "\n Vectores O: ";
+
+                for (int i = 0; i < vO.Length; i++)
+                {
+                    richTextBox_Pasos_Calculo.Text += "\n | o" + i.ToString() + " | ";
+                    for (int j = 0; j < vO[i].Length; j++)
+                    {
+
+                        richTextBox_Pasos_Calculo.Text += vO[i][j].ToString() + " | ";
+
+
+                    }
+                }
 
                 //Comparamos polinomio anterior con el nuevo
                 String polinomioAnterior = richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", "");
@@ -328,7 +358,7 @@ namespace FINTER
                 MessageBox.Show("No selecciono metodo de resolucion");
             }
         }
-        private void verfifica_equidistancia(int[] vx)
+        private void VerfificaEquidistancia(int[] vx)
         {
             int i = 0;
             int distancia;
