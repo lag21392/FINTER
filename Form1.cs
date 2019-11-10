@@ -16,6 +16,7 @@ namespace FINTER
     public partial class Form1 : Form
     {
         string polinomio = "";
+        int[] vXAnt;
         public Form1()
         {
             InitializeComponent();
@@ -75,6 +76,7 @@ namespace FINTER
                 int cantidadValoresXeY = Regex.Replace(X, @"[0-9\-]", string.Empty).Length - 1;
                 int[] vX = new int[cantidadValoresXeY];
                 int[] vY = new int[cantidadValoresXeY];
+                vXAnt = vX;
                 richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY) + "\n";
                 VerfificaEquidistancia(vX);
 
@@ -158,7 +160,7 @@ namespace FINTER
 
                 //Comparamos polinomio anterior con el nuevo
                 String polinomioAnterior = richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", "");
-                richTextBoxPolinomioDistinto.Text = SeAlteroPolinomio(polinomioAnterior, polinomio, vX);
+                richTextBoxPolinomioDistinto.Text = SeAlteroPolinomio(polinomioAnterior, polinomio, vXAnt,vX);
 
 
                 richTextBox_PolinomioPdeX.Text = "L(x) = ";
@@ -250,7 +252,7 @@ namespace FINTER
                 }
                 //Comparamos polinomio anterior con el nuevo
                 String polinomioAnterior = richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", "");
-                richTextBoxPolinomioDistinto.Text = SeAlteroPolinomio(polinomioAnterior, polinomio, vX);
+                richTextBoxPolinomioDistinto.Text = SeAlteroPolinomio(polinomioAnterior, polinomio, vXAnt,vX);
                 //Validacion de si hay polinomiodistinto
 
 
@@ -355,7 +357,7 @@ namespace FINTER
 
                 //Comparamos polinomio anterior con el nuevo
                 String polinomioAnterior = richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", "");
-                richTextBoxPolinomioDistinto.Text = SeAlteroPolinomio(polinomioAnterior, polinomio, vX);
+                richTextBoxPolinomioDistinto.Text = SeAlteroPolinomio(polinomioAnterior, polinomio, vXAnt,vX);
 
                 richTextBox_PolinomioPdeX.Text = "P(x) = ";
                 richTextBox_PolinomioPdeX.Text += polinomio.Replace("+-", "-");
@@ -522,15 +524,30 @@ namespace FINTER
         private void finalizar() {
             Close();
         }
-        private  String SeAlteroPolinomio(String polinomio1, String polinomio2,int[] vX)
+        private  String SeAlteroPolinomio(String polinomio1, String polinomio2, int[] vX1,int[] vX2)
         {
             if (polinomio1 == "")
             {
                 return "";
             }
-            for(int i = 0; i < vX.Length; i++) {
+            for (int i = 0; i < vX1.Length; i++)
+            {
 
-                if (Math.Round(CalcularExpresion(polinomio1, vX[i],false) -CalcularExpresion(polinomio2, vX[i],false),4)!=0.0000)
+                if (Math.Round(CalcularExpresion(polinomio1, vX1[i], false) - CalcularExpresion(polinomio2, vX1[i], false), 4) != 0.0000)
+                {
+                    return "SI";
+                }
+            }
+            for (int i = 0; i < vX2.Length; i++) {
+
+                if (Math.Round(CalcularExpresion(polinomio1, vX2[i],false) -CalcularExpresion(polinomio2, vX2[i],false),4)!=0.0000)
+                {
+                    return "SI";
+                }
+            }
+                        for(int i = 0; i < vX2.Length; i++) {
+
+                if (Math.Round(CalcularExpresion(polinomio1, vX2[i],false) -CalcularExpresion(polinomio2, vX2[i],false),4)!=0.0000)
                 {
                     return "SI";
                 }
