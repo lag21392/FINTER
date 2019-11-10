@@ -83,13 +83,33 @@ namespace FINTER
                 string[] vPL = new string[cantidadValoresXeY];
                 double[] vL = new double[cantidadValoresXeY];
                 polinomio = "";
+
+
+                /*Matriz de polinomios en modo de vectores de los coeficientes
+                Por Ej:
+                    { 
+                      { {1/2} , {-2,1}, {-5,1} },
+                      { {5/6} , {-1,1}, {-5,1} },
+                      { {-8/3}, {-1,1}, {-2,1} }
+                    }
+                    Donde {-2,1} significa (x-2), {-5,1} significa (x-5), {1/2} significa simplemente 1/2 o 0.5, etcétera.
+                    Es decir que en el ejemplo estaría representando el polinomio:
+                    P(x) = 1/2*(x-2)*(x-5) + 5/6*(x-1)*(x-5) - 8/3*(x-1)*(x-2)
+                */
+                double[][][] polinomioFactorizado = new double[cantidadValoresXeY][][];
+
                 for (int i = 0; i < cantidadValoresXeY; i++)
                 {
+                    polinomioFactorizado[i] = new double[vX.Length][];
+                    int yi_Sobre_LiXi_index = 0;
+                    double yi_Sobre_LiXi = 1.0;
                     vPL[i] = "";
                     for (int j = 0; j < cantidadValoresXeY; j++)
                     {
                         if (j != i)
                         {
+                            polinomioFactorizado[i][j] = new double[] { -vX[j], 1 };
+                            yi_Sobre_LiXi = yi_Sobre_LiXi * (polinomioFactorizado[i][j][0] + polinomioFactorizado[i][j][1] * vX[i]);
                             if (vPL[i] == "")
                             {
                                 vPL[i] += "(x-" + vX[j].ToString() + ")";
@@ -100,23 +120,29 @@ namespace FINTER
                             }
 
                             vL[i] = vL[i] * (vX[i] - vX[j]);
+                        } 
+                        else
+                        {
+                            yi_Sobre_LiXi_index = j;
                         }
-
+                        
                     }
+                    polinomioFactorizado[i][yi_Sobre_LiXi_index] = new double[] { (double)vY[i] / yi_Sobre_LiXi, 0 };
+
                     richTextBox_Pasos_Calculo.Text += "L" + i + "(x) = " + vPL[i] + "         ";
-                    richTextBox_Pasos_Calculo.Text += "L" + i + "(" + vX[i] + ") = " + CalcularExprecion(vPL[i], vX[i], false);
+                    richTextBox_Pasos_Calculo.Text += "L" + i + "(" + vX[i] + ") = " + CalcularExpresion(vPL[i], vX[i], false);
                     richTextBox_Pasos_Calculo.Text += "\n\n";
-                    if (CalcularExprecion(vPL[i], vX[i], false) == 0)
+                    if (CalcularExpresion(vPL[i], vX[i], false) == 0)
                     {
 
                     }
                     else if (polinomio == "")
                     {
-                        polinomio += " (" + vY[i] + "/" + CalcularExprecion(vPL[i], vX[i], false) + ")*" + vPL[i];
+                        polinomio += " (" + vY[i] + "/" + CalcularExpresion(vPL[i], vX[i], false) + ")*" + vPL[i];
                     }
                     else
                     {
-                        polinomio += " + (" + vY[i] + "/" + CalcularExprecion(vPL[i], vX[i], false) + ")*" + vPL[i];
+                        polinomio += " + (" + vY[i] + "/" + CalcularExpresion(vPL[i], vX[i], false) + ")*" + vPL[i];
                     }
 
                 }
@@ -142,6 +168,9 @@ namespace FINTER
                 //Preguntar como sacar grado de polinomio de lagrange
                 //richTextBoxGdeX.Text += "G(L(x)) = ";
                 //richTextBoxGdeX.Text += G_de_Px.ToString();
+
+                int grado = CalcularGradoLagrange(polinomioFactorizado);
+                richTextBoxGdeX.Text = grado.ToString();
 
             }
             else if (radioButton_NG_Progresivo.Checked.Equals(true))
@@ -388,14 +417,14 @@ namespace FINTER
         }
         private void Button_Resolver_Click(object sender, EventArgs e)
         {
-            //comprovacion de si hay numero k
+            //comprobacion de si hay numero k
             if (textBox_Valor_K.Text.ToString() == "")
             {
                 MessageBox.Show("Complete el valor K");
             }
             else
             {
-                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", ""), Convert.ToDouble(textBox_Valor_K.Text.Replace(".", ",")),true));
+                textBox_P_de_K.Text = Convert.ToString(CalcularExpresion(richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", ""), Convert.ToDouble(textBox_Valor_K.Text.Replace(".", ",")),true));
             }
 
         }
@@ -430,7 +459,7 @@ namespace FINTER
             }
             return consola;
         }
-        public  double CalcularExprecion(string expresion, double x,Boolean imprimir)
+        public  double CalcularExpresion(string expresion, double x,Boolean imprimir)
         {
             expresion = expresion.Replace(",", ".");
             if (imprimir == true) {
@@ -501,27 +530,64 @@ namespace FINTER
             }
             for (int i = 0; i < vX1.Length; i++)
             {
-
-                if (Math.Round(CalcularExprecion(polinomio1, vX1[i], false) - CalcularExprecion(polinomio2, vX1[i], false), 10) != 0.0000)
+                if (Math.Round(CalcularExpresion(polinomio1, vX1[i], false) - CalcularExpresion(polinomio2, vX1[i], false), 10) != 0.0000)
                 {
                     return "SI";
                 }
             }
             for (int i = 0; i < vX2.Length; i++) {
 
-                if (Math.Round(CalcularExprecion(polinomio1, vX2[i],false) -CalcularExprecion(polinomio2, vX2[i],false),10)!=0.0000)
+                if (Math.Round(CalcularExpresion(polinomio1, vX2[i],false) -CalcularExpresion(polinomio2, vX2[i],false),10)!=0.0000)
                 {
                     return "SI";
                 }
             }
-                        for(int i = 0; i < vX2.Length; i++) {
+            for(int i = 0; i < vX2.Length; i++) {
 
-                if (Math.Round(CalcularExprecion(polinomio1, vX2[i],false) -CalcularExprecion(polinomio2, vX2[i],false),10)!=0.0000)
+                if (Math.Round(CalcularExpresion(polinomio1, vX2[i],false) -CalcularExpresion(polinomio2, vX2[i],false),10)!=0.0000)
                 {
                     return "SI";
                 }
             }
             return "NO";
+        }
+
+        public int CalcularGradoLagrange(double[][][] polinomioFactorizado)
+        {
+            
+            double[] polinomioFinal = null;
+            for(int i = 0; i < polinomioFactorizado.Length; i++)
+            {
+                double[] subPolinomio_xi = polinomioFactorizado[i][0];
+                for(int j = 1; j < polinomioFactorizado[i].Length; j++)
+                {
+                    subPolinomio_xi = AritmeticaPolinomios.MultiplicarPolinomios(subPolinomio_xi, polinomioFactorizado[i][j]);
+                }
+                if(polinomioFinal != null)
+                {
+                    polinomioFinal = AritmeticaPolinomios.SumarPolinomios(polinomioFinal, subPolinomio_xi);
+                }
+                else
+                {
+                    polinomioFinal = subPolinomio_xi;
+                }
+                
+            }
+
+            int grado = -1;
+            bool fin = false;
+            int index = polinomioFinal.Length - 1;
+            while(!fin && index >= 0)
+            {
+                if (polinomioFinal[index] != 0)
+                {
+                    grado = index;
+                    fin = true;
+                }
+                index--;
+            }
+
+            return grado;
         }
 
         private static String CentrarString(String texto, int tamanioLugar)
@@ -531,6 +597,7 @@ namespace FINTER
             String textoConEspacios = texto;
             return textoConEspacios.PadLeft(dondeTieneQueEmpesarTexto).PadRight(tamanioLugar-dondeTieneQueTerminarTexto);
         }
+
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -555,5 +622,6 @@ namespace FINTER
         {
 
         }
+
     }
 }
