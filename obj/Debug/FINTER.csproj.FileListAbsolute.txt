@@ -49,3 +49,17 @@ C:\Users\alaconte\utn_workspace\matematica_superior\FINTER\obj\Debug\FINTER.cspr
 C:\Users\alaconte\utn_workspace\matematica_superior\FINTER\obj\Debug\FINTER.csproj.CopyComplete
 C:\Users\alaconte\utn_workspace\matematica_superior\FINTER\obj\Debug\FINTER.exe
 C:\Users\alaconte\utn_workspace\matematica_superior\FINTER\obj\Debug\FINTER.pdb
+C:\Users\gpaul\Source\Repos\FINTER\bin\Debug\FINTER.exe.config
+C:\Users\gpaul\Source\Repos\FINTER\bin\Debug\FINTER.exe
+C:\Users\gpaul\Source\Repos\FINTER\bin\Debug\FINTER.pdb
+C:\Users\gpaul\Source\Repos\FINTER\bin\Debug\System.Buffers.dll
+C:\Users\gpaul\Source\Repos\FINTER\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\gpaul\Source\Repos\FINTER\bin\Debug\System.Memory.xml
+C:\Users\gpaul\Source\Repos\FINTER\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\gpaul\Source\Repos\FINTER\obj\Debug\FINTER.csprojAssemblyReference.cache
+C:\Users\gpaul\Source\Repos\FINTER\obj\Debug\FINTER.Form1.resources
+C:\Users\gpaul\Source\Repos\FINTER\obj\Debug\FINTER.Properties.Resources.resources
+C:\Users\gpaul\Source\Repos\FINTER\obj\Debug\FINTER.csproj.GenerateResource.cache
+C:\Users\gpaul\Source\Repos\FINTER\obj\Debug\FINTER.csproj.CopyComplete
+C:\Users\gpaul\Source\Repos\FINTER\obj\Debug\FINTER.exe
+C:\Users\gpaul\Source\Repos\FINTER\obj\Debug\FINTER.pdb
