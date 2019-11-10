@@ -43,7 +43,7 @@ namespace FINTER
 
         private void richTextBox_Lote_Datos_X_KeyPress(object sender, KeyPressEventArgs e)
         {
-            FINTER.Validar.SoloParentesisComasNumeros(e);
+            Validar.SoloParentesisComasNumeros(e);
         }
 
         private void richTextBox_Lote_Datos_Y_KeyPress(object sender, KeyPressEventArgs e)
