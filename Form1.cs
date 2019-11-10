@@ -16,12 +16,10 @@ namespace FINTER
     public partial class Form1 : Form
     {
         string polinomio = "";
-        int[] vXAnt;
+        double[] vXAnt;
         public Form1()
         {
             InitializeComponent();
-            //richTextBox_Lote_Datos_X.Text="(2,3,4,5)";
-            //richTextBox_Lote_Datos_Y.Text="(1,2,4,7)";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -45,7 +43,7 @@ namespace FINTER
 
         private void richTextBox_Lote_Datos_X_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Validar.SoloParentesisComasNumeros(e);
+            FINTER.Validar.SoloParentesisComasNumeros(e);
         }
 
         private void richTextBox_Lote_Datos_Y_KeyPress(object sender, KeyPressEventArgs e)
@@ -59,12 +57,13 @@ namespace FINTER
             string X = richTextBox_Lote_Datos_X.Text;
             string Y = richTextBox_Lote_Datos_Y.Text;
             //validacion de datos antes de hallar polinomio
-
+            string[] listaDeValoresX = X.Split(',');
+            string[] listaDeValoresY = Y.Split(',');
             //Validar Formato datos X e Y
             if (!Validar.SoloFormatoDatos(X, "X") || !Validar.SoloFormatoDatos(Y, "Y"))
             {
 
-            } else if (Regex.Replace(X, @"[0-9\-]", string.Empty) != Regex.Replace(Y, @"[0-9\-]", string.Empty)) {
+            } else if ( listaDeValoresX.Length != listaDeValoresY.Length) {
                 //Validar misma cantidad de numeros entre X e Y
                 MessageBox.Show("No hay la misma cantidad de valores entre X y f(x)");
 
@@ -73,16 +72,16 @@ namespace FINTER
             {
                 //Lagrange
                 //carga de datos vector vX y vY
-                int cantidadValoresXeY = Regex.Replace(X, @"[0-9\-]", string.Empty).Length - 1;
-                int[] vX = new int[cantidadValoresXeY];
-                int[] vY = new int[cantidadValoresXeY];
+                int cantidadValoresXeY = X.Split(',').Length;
+                double[] vX = new double[cantidadValoresXeY];
+                double[] vY = new double[cantidadValoresXeY];
                 vXAnt = vX;
                 richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY) + "\n";
                 VerfificaEquidistancia(vX);
 
                 //carga de vector vL
                 string[] vPL = new string[cantidadValoresXeY];
-                int[] vL = new int[cantidadValoresXeY];
+                double[] vL = new double[cantidadValoresXeY];
                 polinomio = "";
                 for (int i = 0; i < cantidadValoresXeY; i++)
                 {
@@ -147,12 +146,11 @@ namespace FINTER
             }
             else if (radioButton_NG_Progresivo.Checked.Equals(true))
             {
-
                 //NG_progresivo
                 //carga de datos vector vX y vY
-                int cantidadValoresXeY = Regex.Replace(X, @"[0-9\-]", string.Empty).Length - 1;
-                int[] vX = new int[cantidadValoresXeY];
-                int[] vY = new int[cantidadValoresXeY];
+                int cantidadValoresXeY = X.Split(',').Length;
+                double[] vX = new double[cantidadValoresXeY];
+                double[] vY = new double[cantidadValoresXeY];
                 richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY);
                 VerfificaEquidistancia(vX);
 
@@ -256,9 +254,9 @@ namespace FINTER
             {
                 //NG_Regresivo
                 //carga de datos vector vX y vY
-                int cantidadValoresXeY = Regex.Replace(X, @"[0-9\-]", string.Empty).Length - 1;
-                int[] vX = new int[cantidadValoresXeY];
-                int[] vY = new int[cantidadValoresXeY];
+                int cantidadValoresXeY = X.Split(',').Length;
+                double[] vX = new double[cantidadValoresXeY];
+                double[] vY = new double[cantidadValoresXeY];
                 richTextBox_Pasos_Calculo.Text = CargarVectoresXeY(X, Y, vX, vY);
                 VerfificaEquidistancia(vX);
 
@@ -361,11 +359,11 @@ namespace FINTER
                 MessageBox.Show("No selecciono metodo de resolucion");
             }
         }
-        private void VerfificaEquidistancia(int[] vx)
+        private void VerfificaEquidistancia(double[] vx)
         {
             int i = 0;
-            int distancia;
-            int distancia_proximo;
+            double distancia;
+            double distancia_proximo;
             distancia = vx[i + 1] - vx[i];
             
            // distancia_proximo = distancia;
@@ -397,16 +395,16 @@ namespace FINTER
             }
             else
             {
-                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", ""), Convert.ToInt32(textBox_Valor_K.Text),true));
+                textBox_P_de_K.Text = Convert.ToString(CalcularExprecion(richTextBox_PolinomioPdeX.Text.Replace("P(x) = ", "").Replace("L(x) = ", ""), Convert.ToDouble(textBox_Valor_K.Text.Replace(".", ",")),true));
             }
 
         }
 
 
-        public static String CargarVectoresXeY(string X, string Y, int[] vX, int[] vY)
+        public static String CargarVectoresXeY(string X, string Y, double[] vX, double[] vY)
         {
             String consola = "| " +CentrarString("X",6)+ "  |  " + CentrarString("Y", 6) + "  | \n";
-            int cantidadValoresXeY = Regex.Replace(X, @"[0-9\-]", string.Empty).Length - 1;
+            int cantidadValoresXeY = X.Split(',').Length;
             //paso a formato de (1,3,8) a 1,3,8,
             string remplazoX = Regex.Replace(X, @"[()]", string.Empty) + ",";
             string remplazoY = Regex.Replace(Y, @"[()]", string.Empty) + ",";
@@ -414,8 +412,8 @@ namespace FINTER
             {
 
                 string prueba = remplazoX.Substring(0, remplazoX.IndexOf(','));
-                vX[i] = Convert.ToInt32(remplazoX.Substring(0, remplazoX.IndexOf(',')));
-                vY[i] = Convert.ToInt32(remplazoY.Substring(0, remplazoY.IndexOf(',')));
+                vX[i] = Convert.ToDouble(remplazoX.Substring(0, remplazoX.IndexOf(',')).Replace(".", ","));
+                vY[i] = Convert.ToDouble(remplazoY.Substring(0, remplazoY.IndexOf(',')).Replace(".", ","));
                 if (remplazoX.IndexOf(',') + 1 < remplazoX.Length)
                 {
                     remplazoX = remplazoX.Substring(remplazoX.IndexOf(',') + 1, remplazoX.Length - remplazoX.IndexOf(',') - 1);
@@ -480,9 +478,9 @@ namespace FINTER
                 if (imprimir == true)
                 {
                     richTextBox_Pasos_Calculo.Text += "\n\n";
-                    richTextBox_Pasos_Calculo.Text += "P(" + x.ToString() + ") = " + Math.Round(fx, 2).ToString();
+                    richTextBox_Pasos_Calculo.Text += "P(" + x.ToString() + ") = " + Math.Round(fx, 10).ToString();
                 }
-                return Math.Round(fx, 2);
+                return Math.Round(fx, 10);
             }
             else
             {
@@ -495,7 +493,7 @@ namespace FINTER
         private void finalizar() {
             Close();
         }
-        private  String SeAlteroPolinomio(String polinomio1, String polinomio2, int[] vX1,int[] vX2)
+        private  String SeAlteroPolinomio(String polinomio1, String polinomio2, double[] vX1,double[] vX2)
         {
             if (polinomio1 == "")
             {
@@ -504,21 +502,21 @@ namespace FINTER
             for (int i = 0; i < vX1.Length; i++)
             {
 
-                if (Math.Round(CalcularExprecion(polinomio1, vX1[i], false) - CalcularExprecion(polinomio2, vX1[i], false), 4) != 0.0000)
+                if (Math.Round(CalcularExprecion(polinomio1, vX1[i], false) - CalcularExprecion(polinomio2, vX1[i], false), 10) != 0.0000)
                 {
                     return "SI";
                 }
             }
             for (int i = 0; i < vX2.Length; i++) {
 
-                if (Math.Round(CalcularExprecion(polinomio1, vX2[i],false) -CalcularExprecion(polinomio2, vX2[i],false),4)!=0.0000)
+                if (Math.Round(CalcularExprecion(polinomio1, vX2[i],false) -CalcularExprecion(polinomio2, vX2[i],false),10)!=0.0000)
                 {
                     return "SI";
                 }
             }
                         for(int i = 0; i < vX2.Length; i++) {
 
-                if (Math.Round(CalcularExprecion(polinomio1, vX2[i],false) -CalcularExprecion(polinomio2, vX2[i],false),4)!=0.0000)
+                if (Math.Round(CalcularExprecion(polinomio1, vX2[i],false) -CalcularExprecion(polinomio2, vX2[i],false),10)!=0.0000)
                 {
                     return "SI";
                 }

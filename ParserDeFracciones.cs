@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace FINTER
 {
@@ -12,30 +15,38 @@ namespace FINTER
             Match m = re.Match(fraccion);
             double val = m.Groups[1].Success ? double.Parse(m.Groups[1].Value) : 0.0;
 
-            if (m.Groups[3].Success)
+            try
             {
-                val += double.Parse("0." + m.Groups[3].Value);
-            }
-            else
+                if (m.Groups[3].Success)
+                {
+                    val += double.Parse("0." + m.Groups[3].Value);
+                }
+                else
+                {
+                    val += double.Parse(m.Groups[4].Value) / double.Parse(m.Groups[5].Value);
+                }
+                return val;
+            } catch(FormatException e)
             {
-                val += double.Parse(m.Groups[4].Value) / double.Parse(m.Groups[5].Value);
+                return Double.Parse(fraccion);
             }
-            return val;
+
         }
-        public string obtenerValorParaVista(decimal value)
+        public string obtenerValorParaVista(double value)
         {
+            double absoluteValue = Math.Abs(value);
             // get the whole value of the fraction
-            decimal mWhole = Math.Truncate(value);
+            double mWhole = Math.Truncate(absoluteValue);
 
             // get the fractional value
-            decimal mFraction = value - mWhole;
+            double mFraction = absoluteValue - mWhole;
 
             // initialize a numerator and denomintar
             uint mNumerator = 0;
             uint mDenomenator = 1;
 
             // ensure that there is actual a fraction
-            if (mFraction > 0m)
+            if (Math.Abs(mFraction) > 0d)
             {
                 // convert the value to a string so that you can count the number of decimal places there are
                 string strFraction = mFraction.ToString().Remove(0, 2);
@@ -61,13 +72,13 @@ namespace FINTER
             StringBuilder mBuilder = new StringBuilder();
 
             // add the whole number if it's greater than 0
-            if (mWhole > 0m)
+            if (Math.Abs(mWhole) > 0d)
             {
                 mBuilder.Append(mWhole);
             }
 
             // add the fraction if it's greater than 0m
-            if (mFraction > 0m)
+            if (Math.Abs(mFraction) > 0d)
             {
                 if (mBuilder.Length > 0)
                 {
