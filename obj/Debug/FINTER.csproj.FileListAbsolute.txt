@@ -33,3 +33,9 @@ C:\Users\LAG\source\repos\FINTER\obj\Debug\FINTER.csproj.CoreCompileInputs.cache
 C:\Users\LAG\source\repos\FINTER\obj\Debug\FINTER.csproj.CopyComplete
 C:\Users\LAG\source\repos\FINTER\obj\Debug\FINTER.exe
 C:\Users\LAG\source\repos\FINTER\obj\Debug\FINTER.pdb
+C:\Users\alaconte\utn_workspace\matematica_superior\FINTER\obj\Debug\FINTER.csprojAssemblyReference.cache
+C:\Users\alaconte\utn_workspace\matematica_superior\FINTER\obj\Debug\FINTER.Form1.resources
+C:\Users\alaconte\utn_workspace\matematica_superior\FINTER\obj\Debug\FINTER.Properties.Resources.resources
+C:\Users\alaconte\utn_workspace\matematica_superior\FINTER\obj\Debug\FINTER.csproj.GenerateResource.cache
+C:\Users\alaconte\utn_workspace\matematica_superior\FINTER\obj\Debug\FINTER.exe
+C:\Users\alaconte\utn_workspace\matematica_superior\FINTER\obj\Debug\FINTER.pdb
